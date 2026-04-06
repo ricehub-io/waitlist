@@ -1,15 +1,9 @@
-# `create-preact`
+# RiceHub Waitlist
 
-<h2 align="center">
-  <img height="256" width="256" src="./src/assets/preact.svg">
-</h2>
+## Usage
 
-<h3 align="center">Get started using Preact and Vite!</h3>
+- `pnpm dev` - Starts a dev server at http://localhost:5173/
 
-## Getting Started
+- `pnpm build` - Builds for production, emitting to `dist/`
 
--   `pnpm dev` - Starts a dev server at http://localhost:5173/
-
--   `pnpm build` - Builds for production, emitting to `dist/`
-
--   `pnpm preview` - Starts a server at http://localhost:4173/ to test production build locally
+- `pnpm preview` - Starts a server at http://localhost:4173/ to test production build locally
