@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Syne:wght@400..800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -12,6 +13,13 @@
     --color-phosphor-dark: #8ab020;
     --color-parchment: #f5f3ee;
     --color-muted: #6b6b72;
+
+    /* idk whats the name of it */
+    /* its not in the brand design system */
+    --color-dark-text: #08080b;
+
+    --font-syne: "Syne", sans-serif;
+    --font-dm-mono: "DM Mono", monospace;
 }
 
 body {
