@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+    --color-*: initial;
+
+    /* Dark */
+    --color-void: #0a0a0c;
+    --color-pitch: #0e0e10;
+    --color-obsidian: #1a1a1e;
+    --color-phosphor: #c8f53e;
+    --color-phosphor-light: #e2ff6e;
+    --color-phosphor-dark: #8ab020;
+    --color-parchment: #f5f3ee;
+    --color-muted: #6b6b72;
+}
+
+body {
+    @apply bg-void text-parchment;
+}
