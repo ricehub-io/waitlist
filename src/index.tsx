@@ -11,7 +11,7 @@ export function App() {
     return (
         <LocationProvider>
             <Header />
-            <main className="flex-1">
+            <main className="flex flex-1 flex-col">
                 <Router>
                     <Route path="/" component={Home} />
                     <Route default component={NotFound} />
