@@ -3,14 +3,14 @@ import { motion } from "motion/react";
 
 export default function Header() {
     return (
-        <header className="border-phosphor/8 font-dm-mono text-muted flex items-center border-b px-11 py-6">
-            <img className="h-9" src={logo} alt="RiceHub" />
-            <nav className="text-sm tracking-[0.14em] uppercase">
+        <header className="border-phosphor/8 font-dm-mono text-muted flex items-center border-b px-11 py-6 text-xs">
+            <img className="h-8" src={logo} alt="RiceHub" />
+            <nav className="tracking-[0.14em] uppercase">
                 <Link label="Explore" href="#explore" />
                 <Link label="How it works" href="#how-it-works" />
                 <Link label="Creators" href="#creators" />
             </nav>
-            <p className="mr-6 ml-auto text-sm tracking-[0.14em] uppercase">
+            <p className="mr-6 ml-auto tracking-[0.14em] uppercase">
                 <span className="text-phosphor">343</span> on waitlist
             </p>
             <JoinButton />
@@ -37,7 +37,7 @@ const Link = ({ label, href }: { label: string; href: string }) => (
         <motion.span
             className="bg-phosphor absolute -bottom-0.5 left-0 h-px w-full origin-left"
             variants={{
-                rest: { scaleX: 0.5, opacity: 0 },
+                rest: { scaleX: 0.1, opacity: 0 },
                 hover: { scaleX: 1, opacity: 1 },
             }}
             transition={{
@@ -53,7 +53,7 @@ const Link = ({ label, href }: { label: string; href: string }) => (
 
 const JoinButton = () => (
     <motion.button
-        className="bg-phosphor font-syne text-dark-text relative cursor-pointer overflow-hidden rounded-xs px-5 py-2.5 font-extrabold"
+        className="bg-phosphor font-syne text-dark-text relative cursor-pointer overflow-hidden rounded-xs px-5 py-2.5 text-base font-extrabold"
         initial="rest"
         whileHover="hover"
         animate="rest"
