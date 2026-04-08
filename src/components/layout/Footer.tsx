@@ -1,4 +1,4 @@
-import { Form } from "radix-ui";
+import NotifyForm from "@/components/ui/NotifyForm";
 
 const Sections = [
     {
@@ -51,7 +51,7 @@ export default function Footer() {
                         Rice
                         <span className="text-phosphor">Hub</span>
                     </h3>
-                    <i className="font-fraunces text-muted font-light">
+                    <i className="font-fraunces text-muted mb-10 block font-light">
                         "Your desktop, authored."
                     </i>
                     <NotifyForm />
@@ -96,29 +96,3 @@ export default function Footer() {
         </footer>
     );
 }
-
-const NotifyForm = () => (
-    <Form.Root className="mt-10 flex text-xs">
-        <Form.Field name="email">
-            <Form.Message match="valueMissing">
-                Please enter your email address
-            </Form.Message>
-            <Form.Message match="typeMismatch">
-                Please provide a valid email address
-            </Form.Message>
-            <Form.Control asChild>
-                <input
-                    className="bg-obsidian border-slate font-dm-mono text-muted h-full border px-4 tracking-[0.07em] outline-none"
-                    type="email"
-                    placeholder="your@email.com"
-                    required
-                />
-            </Form.Control>
-        </Form.Field>
-        <Form.Submit asChild>
-            <button className="bg-phosphor text-dark-text font-syne px-6 py-3 font-extrabold">
-                Notify Me
-            </button>
-        </Form.Submit>
-    </Form.Root>
-);

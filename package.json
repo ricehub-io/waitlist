@@ -10,11 +10,13 @@
         "lint": "eslint src"
     },
     "dependencies": {
+        "@preact/signals": "^2.9.0",
         "@tailwindcss/vite": "^4.2.2",
         "motion": "^12.38.0",
         "preact": "^10.26.9",
         "preact-iso": "^2.11.1",
         "radix-ui": "^1.4.3",
+        "tailwind-merge": "^3.5.0",
         "tailwindcss": "^4.2.2"
     },
     "devDependencies": {

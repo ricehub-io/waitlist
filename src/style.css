@@ -25,6 +25,7 @@
 
     /* Neon */
     --color-amber-alert: #ff9f0a;
+    --color-cyan: #00d4ff;
 
     /* idk whats the name of it */
     /* its not in the brand design system */
@@ -43,4 +44,17 @@ body {
 
 #app {
     @apply flex min-h-screen flex-col;
+}
+
+.text-scroll-container div {
+    animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
