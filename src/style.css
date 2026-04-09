@@ -48,6 +48,7 @@ body {
 
 .text-scroll-container div {
     animation: scroll-left 20s linear infinite;
+    /* padding-left: 50%; */
 }
 
 @keyframes scroll-left {

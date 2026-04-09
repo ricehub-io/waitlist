@@ -34,7 +34,7 @@ export default function Hero() {
                 alt=""
                 width={192}
                 height={250}
-                className="pointer-events-none absolute right-0 bottom-0 -z-10"
+                className="pointer-events-none absolute right-0 bottom-10 -z-10"
             />
 
             <div className="mx-auto flex w-[min(80%,900px)] flex-col items-center gap-10 py-20">
@@ -130,7 +130,7 @@ export default function Hero() {
                             </div>
                         </Panel>
                     </div>
-                    <div className="grid grid-cols-4 gap-0.5">
+                    <div className="mt-0.5 grid grid-cols-4 gap-0.5">
                         {CounterItems.map(({ value, label }, idx) => (
                             <div className="border border-white/7 bg-white/2 px-4.5 py-3">
                                 <p
@@ -155,7 +155,7 @@ export default function Hero() {
 const Dot = ({ className }: { className?: string }) => (
     <span
         className={cn(
-            "bg-amber-alert aspect-square w-1.5 rounded-full",
+            "bg-amber-alert inline-block aspect-square w-1.5 rounded-full",
             className,
         )}
     />
@@ -193,26 +193,36 @@ const ArrowLi = ({ text }: { text: string }) => (
 );
 
 const ScrollingText = () => {
+    const AccentDot = () => <Dot className="bg-phosphor" />;
+    const Text = ({ children }: { children: ComponentChildren }) => (
+        <p className="border-obsidian flex items-center justify-center gap-3 border-r px-7 py-3">
+            {children}
+        </p>
+    );
+
     return (
-        <div className="bg-pitch border-obsidian text-muted w-full overflow-hidden border-t border-b">
+        <div className="bg-pitch border-obsidian text-muted w-full border-t border-b">
             <div className="text-scroll-container font-dm-mono flex text-xs tracking-[0.17em] whitespace-nowrap uppercase">
                 {[0, 1].map(() => (
-                    <div className="flex shrink-0 gap-6 text-center">
-                        <p className="border-obsidian border-r px-7 py-3">
+                    <div className="flex shrink-0">
+                        <Text>
+                            <AccentDot />
                             Coming soon{" "}
                             <span className="text-phosphor">RICE HUB</span> -
-                            THE MARKET PLACE FOR LINUX RICING
-                        </p>
-                        <p className="border-obsidian border-r px-7 py-3">
+                            THE MARKETPLACE FOR LINUX RICING
+                        </Text>
+                        <Text>
+                            <AccentDot />
                             LAUNCH COMPETITION OPEN NOW -{" "}
                             <span className="text-phosphor">
                                 SUBMIT YOUR RICE
                             </span>
-                        </p>
-                        <p className="border-obsidian border-r px-7 py-3">
+                        </Text>
+                        <Text>
+                            <AccentDot />
                             10 FOUNDING CREATOR SPOTS -{" "}
                             <span className="text-cyan">7 REMAINING</span>
-                        </p>
+                        </Text>
                     </div>
                 ))}
             </div>
