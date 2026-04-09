@@ -19,7 +19,7 @@ const CounterItems = [
     { value: "99%", label: "Deploy Success Rate" },
 ];
 
-export default function Hero() {
+export default function HeroSection() {
     return (
         <section className="relative flex-1 overflow-hidden">
             <img
@@ -50,7 +50,7 @@ export default function Hero() {
                             </p>
                         </div>
                     </div>
-                    <h1 className="font-fraunces text-center text-7xl font-bold -tracking-[0.035em]">
+                    <h1 className="font-fraunces text-center text-[4.875rem] leading-none font-bold -tracking-[0.035em]">
                         The marketplace for
                         <br />
                         Linux ricing{" "}
@@ -64,7 +64,8 @@ export default function Hero() {
                     <span className="text-parchment font-medium">
                         one-click Nix Flake deployment
                     </span>
-                    , creator monetization, and monthly cash competitions. We
+                    ,<br />
+                    creator monetization, and monthly cash competitions. We
                     launch soon. Be first.
                 </p>
                 <div>
