@@ -11,6 +11,7 @@
     /* CUSTOM COLOR PALETTES */
     --color-*: initial;
     --color-white: #ffffff;
+    --color-black: #000000;
 
     /* Dark */
     --color-void: #0a0a0c;
