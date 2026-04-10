@@ -1,23 +1,50 @@
+import { HTMLMotionProps, motion } from "motion/react";
+
 interface ButtonProps {
     label: string;
 }
 
-// TODO: make it interactive
-// TODO: use better icon for the arrow
 export default function Button({ label }: ButtonProps) {
     return (
         <button className="bg-phosphor flex cursor-pointer items-center rounded-xs p-0.5">
             <span className="text-void font-syne px-4 font-extrabold">
                 {label}
             </span>
-            <div className="bg-pitch rounded-xs p-2">
-                <ArrowRight />
-            </div>
+            <motion.div
+                className="bg-pitch relative overflow-hidden rounded-xs p-2"
+                initial="rest"
+                whileHover="hover"
+                animate="rest"
+            >
+                <div className="invisible">
+                    <ArrowIcon />
+                </div>
+                <Arrow
+                    className="absolute inset-0 flex items-center justify-center"
+                    variants={{
+                        rest: { x: "0%" },
+                        hover: { x: "100%" },
+                    }}
+                />
+                <Arrow
+                    className="absolute inset-0 flex items-center justify-center"
+                    variants={{
+                        rest: { x: "-100%" },
+                        hover: { x: "0%" },
+                    }}
+                />
+            </motion.div>
         </button>
     );
 }
 
-const ArrowRight = () => (
+const Arrow = (props: HTMLMotionProps<"div">) => (
+    <motion.div {...props}>
+        <ArrowIcon />
+    </motion.div>
+);
+
+const ArrowIcon = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

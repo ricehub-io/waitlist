@@ -57,17 +57,14 @@ const JoinButton = () => (
         initial="rest"
         whileHover="hover"
         animate="rest"
-        transition={{
-            type: "spring",
-            stiffness: 234,
-            damping: 15,
-        }}
     >
+        <span className="invisible">Join Waitlist</span>
+
         <motion.span
-            className="block"
+            className="absolute inset-0 flex items-center justify-center"
             variants={{
                 rest: { y: "0%" },
-                hover: { y: "-150%" },
+                hover: { y: "-100%" },
             }}
         >
             Join Waitlist
@@ -75,7 +72,7 @@ const JoinButton = () => (
         <motion.span
             className="absolute inset-0 flex items-center justify-center"
             variants={{
-                rest: { y: "150%" },
+                rest: { y: "100%" },
                 hover: { y: "0%" },
             }}
         >
