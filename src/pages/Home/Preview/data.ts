@@ -1,6 +1,6 @@
 import { RiceDto } from "@/types/dto";
 
-const pub = (file: string) => `http://localhost:5173/public/${file}`;
+const pub = (file: string) => `http://localhost:5173/${file}`;
 
 export const DevRices: RiceDto[] = [
     {

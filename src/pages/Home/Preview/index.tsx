@@ -1,6 +1,7 @@
 import Button from "@/components/ui/Button";
 import Section from "@/components/ui/Section";
 import SectionBadge from "@/components/ui/SectionBadge";
+import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { DevRices } from "@/pages/Home/Preview/data";
 import RiceCard from "@/pages/Home/Preview/RiceCard";
@@ -14,12 +15,14 @@ export default function PreviewSection() {
                 <SectionTitle>
                     A taste of what's <i className="text-phosphor">coming.</i>
                 </SectionTitle>
-                <p className="text-muted tracking-[0.019em]">
+                <SectionDescription
+                    text="
                     These are real rices from the community, imported with
                     explicit creator permission. They represent the quality and
                     style of configs that will be on the platform at launch.
                     Every one is Nix Flake compatible.
-                </p>
+                    "
+                />
             </div>
 
             {/* example rices */}

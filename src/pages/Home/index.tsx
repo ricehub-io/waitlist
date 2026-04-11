@@ -1,6 +1,7 @@
 import HeroSection from "@/pages/Home/Hero";
 import HowItWorksSection from "@/pages/Home/HowItWorks";
 import PreviewSection from "@/pages/Home/Preview";
+import TerminalDeploySection from "@/pages/Home/TerminalDeploy";
 
 export default function Home() {
     return (
@@ -8,6 +9,7 @@ export default function Home() {
             <HeroSection />
             <PreviewSection />
             <HowItWorksSection />
+            <TerminalDeploySection />
         </div>
     );
 }
