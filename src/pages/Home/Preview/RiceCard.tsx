@@ -24,8 +24,11 @@ export default function RiceCard({
                     )}
                 </div>
                 <ul className="text-phosphor text-3xs flex gap-1 tracking-[0.1875em] uppercase">
-                    {tags.map((tag) => (
-                        <li className="border-phosphor/10 border px-2 py-0.5">
+                    {tags.map((tag, idx) => (
+                        <li
+                            key={idx}
+                            className="border-phosphor/10 border px-2 py-0.5"
+                        >
                             {tag}
                         </li>
                     ))}

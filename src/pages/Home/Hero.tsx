@@ -113,8 +113,8 @@ export default function HeroSection() {
                                     </span>
                                 </p>
                                 <ul className="mt-4 list-inside p-0 text-xs">
-                                    {ForCreatorsItems.map((text) => (
-                                        <ArrowLi text={text} />
+                                    {ForCreatorsItems.map((text, idx) => (
+                                        <ArrowLi key={idx} text={text} />
                                     ))}
                                 </ul>
                             </div>
@@ -133,7 +133,10 @@ export default function HeroSection() {
                     </div>
                     <div className="mt-0.5 grid grid-cols-4 gap-0.5">
                         {CounterItems.map(({ value, label }, idx) => (
-                            <div className="border border-white/7 bg-white/2 px-4.5 py-3">
+                            <div
+                                key={idx}
+                                className="border border-white/7 bg-white/2 px-4.5 py-3"
+                            >
                                 <p
                                     className={`font-syne mb-1 text-2xl font-extrabold ${idx % 2 == 0 ? "text-phosphor" : ""}`}
                                 >
@@ -204,8 +207,8 @@ const ScrollingText = () => {
     return (
         <div className="bg-pitch border-obsidian text-muted w-full border-t border-b">
             <div className="text-scroll-container font-dm-mono flex text-xs tracking-[0.17em] whitespace-nowrap uppercase">
-                {[0, 1].map(() => (
-                    <div className="flex shrink-0">
+                {[0, 1].map((v) => (
+                    <div key={v} className="flex shrink-0">
                         <Text>
                             <AccentDot />
                             Coming soon{" "}

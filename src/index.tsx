@@ -1,5 +1,6 @@
 import { render } from "preact";
 import { LocationProvider, Router, Route } from "preact-iso";
+import "@hackernoon/pixel-icon-library/fonts/iconfont.css";
 
 import "@/style.css";
 import Home from "@/pages/Home";

@@ -1,19 +1,19 @@
 import Button from "@/components/ui/Button";
+import Section from "@/components/ui/Section";
+import SectionBadge from "@/components/ui/SectionBadge";
+import SectionTitle from "@/components/ui/SectionTitle";
 import { DevRices } from "@/pages/Home/Preview/data";
 import RiceCard from "@/pages/Home/Preview/RiceCard";
 
 export default function PreviewSection() {
     return (
-        <section className="mx-auto w-[min(80%,1400px)] py-20">
+        <Section>
             {/* heading */}
             <div className="max-w-1/2">
-                <p className="font-dm-mono text-2xs text-phosphor flex items-center gap-2 tracking-[0.3em] uppercase">
-                    <span className="bg-phosphor inline-block h-px w-4" />
-                    Preview — At Launch
-                </p>
-                <h2 className="font-fraunces my-4 text-[3.125rem] font-bold -tracking-[0.03em]">
+                <SectionBadge text="Preview — At Launch" />
+                <SectionTitle>
                     A taste of what's <i className="text-phosphor">coming.</i>
-                </h2>
+                </SectionTitle>
                 <p className="text-muted tracking-[0.019em]">
                     These are real rices from the community, imported with
                     explicit creator permission. They represent the quality and
@@ -23,16 +23,16 @@ export default function PreviewSection() {
             </div>
 
             {/* example rices */}
-            <ul className="my-10 grid grid-cols-3 gap-0.5">
-                {DevRices.map((rice) => (
-                    <li>
+            <ul className="grid grid-cols-3 gap-0.5">
+                {DevRices.map((rice, idx) => (
+                    <li key={idx}>
                         <RiceCard {...rice} />
                     </li>
                 ))}
                 <li>
                     <div className="border-slate flex h-full flex-col items-center justify-center gap-4 border-2 border-dashed">
-                        <button className="bg-phosphor p-3.5 text-black">
-                            <PlusIcon />
+                        <button className="bg-phosphor flex aspect-square items-center justify-center p-5 text-black">
+                            <i class="hn hn-plus text-4xl" />
                         </button>
                         <p className="font-syne text-xl font-bold">
                             Add Your Rice
@@ -53,23 +53,6 @@ export default function PreviewSection() {
                 </div>
                 <Button label="Apply as Founding Creator" />
             </div>
-        </section>
+        </Section>
     );
 }
-
-const PlusIcon = () => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="size-12.5"
-    >
-        <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 4.5v15m7.5-7.5h-15"
-        />
-    </svg>
-);

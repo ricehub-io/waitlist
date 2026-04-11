@@ -10,6 +10,7 @@
         "lint": "eslint src"
     },
     "dependencies": {
+        "@hackernoon/pixel-icon-library": "^1.0.6",
         "@preact/signals": "^2.9.0",
         "@tailwindcss/vite": "^4.2.2",
         "motion": "^12.38.0",

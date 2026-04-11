@@ -58,12 +58,12 @@ export default function Footer() {
                 </div>
                 {/* right side */}
                 <div className="flex gap-10">
-                    {Sections.map(({ title, links }) => (
-                        <div className="font-epilogue flex flex-col">
+                    {Sections.map(({ title, links }, idx) => (
+                        <div key={idx} className="font-epilogue flex flex-col">
                             <h3 className="mb-6 text-xl">{title}</h3>
                             <ul>
-                                {links.map(({ label, href }) => (
-                                    <li className="not-last:mb-3">
+                                {links.map(({ label, href }, lidx) => (
+                                    <li key={lidx} className="not-last:mb-3">
                                         <a
                                             href={href}
                                             className="text-muted text-sm"
@@ -86,8 +86,11 @@ export default function Footer() {
                     Building in stealth · All rights reserved
                 </p>
                 <ul>
-                    {Tags.map((text) => (
-                        <li className="bg-phosphor/9 border-phosphor/20 text-phosphor text-3xs inline border px-2.5 py-1 tracking-[0.105em] not-first:ml-1.5">
+                    {Tags.map((text, idx) => (
+                        <li
+                            key={idx}
+                            className="bg-phosphor/9 border-phosphor/20 text-phosphor text-3xs inline border px-2.5 py-1 tracking-[0.105em] not-first:ml-1.5"
+                        >
                             {text}
                         </li>
                     ))}
