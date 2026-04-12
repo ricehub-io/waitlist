@@ -31,6 +31,9 @@
     /* idk whats the name of it */
     /* its not in the brand design system */
     --color-dark-text: #08080b;
+    --color-terminal-title-bar: #111115;
+    --color-terminal: #09090c;
+    --color-terminal-success: #4ade80;
 
     /* CUSTOM FONTS */
     --font-syne: "Syne", sans-serif;
@@ -50,6 +53,12 @@ body {
 .text-scroll-container div {
     animation: scroll-left 20s linear infinite;
     /* padding-left: 50%; */
+}
+
+.terminal {
+    box-shadow:
+        0 0 0 1px rgba(200, 245, 62, 0.05),
+        0 40px 100px rgba(0, 0, 0, 0.7);
 }
 
 @keyframes scroll-left {

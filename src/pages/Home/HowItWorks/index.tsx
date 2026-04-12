@@ -80,8 +80,8 @@ const StepCard = ({
         </div>
 
         {/* terminal */}
-        <div className="bg-pitch border-obsidian text-phosphor font-dm-mono text-2xs mt-auto border px-5 py-2.5 leading-4.5">
-            <samp>
+        <div className="bg-pitch border-obsidian text-phosphor text-2xs mt-auto border px-5 py-2.5 leading-4.5">
+            <samp className="font-dm-mono">
                 $ {command}
                 <br />
                 <span className="text-phosphor-dark">{output}</span>
