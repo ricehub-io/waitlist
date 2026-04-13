@@ -1,17 +1,24 @@
+import { cn } from "@/lib/utils";
 import { HTMLMotionProps, motion } from "motion/react";
 
 interface ButtonProps {
     label: string;
+    className?: string;
 }
 
-export default function Button({ label }: ButtonProps) {
+export default function Button({ label, className }: ButtonProps) {
     return (
-        <button className="bg-phosphor flex cursor-pointer items-center rounded-xs p-0.5">
-            <span className="text-void font-syne px-4 font-extrabold">
+        <button
+            className={cn(
+                "bg-phosphor flex cursor-pointer items-center rounded-xs p-0.5",
+                className,
+            )}
+        >
+            <p className="text-void font-syne w-full px-4 text-left font-extrabold">
                 {label}
-            </span>
+            </p>
             <motion.div
-                className="bg-pitch relative aspect-square overflow-hidden rounded-xs p-2.5"
+                className="bg-pitch relative aspect-square overflow-hidden rounded-xs p-3"
                 initial="rest"
                 whileHover="hover"
                 animate="rest"

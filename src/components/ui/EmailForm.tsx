@@ -18,7 +18,7 @@ export default function EmailForm({ buttonText, className }: EmailFormProps) {
                 </Form.Message>
                 <Form.Control asChild>
                     <input
-                        className="bg-obsidian border-slate font-dm-mono text-muted h-full w-full border px-4 tracking-[0.08em] outline-none"
+                        className="bg-obsidian border-slate font-dm-mono placeholder-muted text-muted h-full w-full border px-4 tracking-[0.08em] outline-none"
                         type="email"
                         placeholder="your@email.com"
                         required

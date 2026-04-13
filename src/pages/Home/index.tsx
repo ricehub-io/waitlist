@@ -1,3 +1,4 @@
+import FoundingCreatorsSection from "@/pages/Home/FoundingCreators";
 import HeroSection from "@/pages/Home/Hero";
 import HowItWorksSection from "@/pages/Home/HowItWorks";
 import PreviewSection from "@/pages/Home/Preview";
@@ -10,6 +11,7 @@ export default function Home() {
             <PreviewSection />
             <HowItWorksSection />
             <TerminalDeploySection />
+            <FoundingCreatorsSection />
         </div>
     );
 }
