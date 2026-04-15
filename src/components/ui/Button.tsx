@@ -1,46 +1,56 @@
 import { cn } from "@/lib/utils";
 import { HTMLMotionProps, motion } from "motion/react";
 
+export type ButtonType = "normal" | "outline";
+
 interface ButtonProps {
     label: string;
     className?: string;
+    variant?: ButtonType;
 }
 
-export default function Button({ label, className }: ButtonProps) {
+export default function Button({
+    label,
+    className,
+    variant = "normal",
+}: ButtonProps) {
     return (
         <button
             className={cn(
-                "bg-phosphor flex cursor-pointer items-center rounded-xs p-0.5",
+                "flex h-11 cursor-pointer items-center rounded-xs p-0.5",
                 className,
+                variant === "normal" && "bg-phosphor text-void text-left",
+                variant === "outline" &&
+                    "border-muted text-muted hover:border-phosphor/40 hover:text-phosphor border text-center",
             )}
         >
-            <p className="text-void font-syne w-full px-4 text-left font-extrabold">
-                {label}
-            </p>
-            <motion.div
-                className="bg-pitch relative aspect-square overflow-hidden rounded-xs p-3"
-                initial="rest"
-                whileHover="hover"
-                animate="rest"
-            >
-                <div className="invisible">
-                    <ArrowIcon />
-                </div>
-                <Arrow
-                    className="absolute inset-0 flex items-center justify-center"
-                    variants={{
-                        rest: { x: "0%" },
-                        hover: { x: "100%" },
-                    }}
-                />
-                <Arrow
-                    className="absolute inset-0 flex items-center justify-center"
-                    variants={{
-                        rest: { x: "-100%" },
-                        hover: { x: "0%" },
-                    }}
-                />
-            </motion.div>
+            <p className="font-syne w-full px-4 font-extrabold">{label}</p>
+            {variant === "normal" && (
+                <motion.div
+                    className="bg-pitch relative h-full overflow-hidden rounded-xs px-3"
+                    initial="rest"
+                    whileHover="hover"
+                    animate="rest"
+                >
+                    <div className="invisible flex h-full items-center justify-center">
+                        <ArrowIcon />
+                    </div>
+                    <Arrow
+                        className="absolute inset-0 flex items-center justify-center"
+                        variants={{
+                            rest: { x: "0%" },
+                            hover: { x: "100%" },
+                        }}
+                    />
+                    <Arrow
+                        className="absolute inset-0 flex items-center justify-center"
+                        variants={{
+                            rest: { x: "-100%" },
+                            hover: { x: "0%" },
+                        }}
+                    />
+                </motion.div>
+            )}
         </button>
     );
 }

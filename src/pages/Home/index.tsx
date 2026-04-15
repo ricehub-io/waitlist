@@ -2,6 +2,7 @@ import FoundingCreatorsSection from "@/pages/Home/FoundingCreators";
 import HeroSection from "@/pages/Home/Hero";
 import HowItWorksSection from "@/pages/Home/HowItWorks";
 import PreviewSection from "@/pages/Home/Preview";
+import PricingSection from "@/pages/Home/Pricing";
 import TerminalDeploySection from "@/pages/Home/TerminalDeploy";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
             <HowItWorksSection />
             <TerminalDeploySection />
             <FoundingCreatorsSection />
+            <PricingSection />
         </div>
     );
 }
