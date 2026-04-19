@@ -21,7 +21,7 @@ export default function Button({
                 className,
                 variant === "normal" && "bg-phosphor text-void text-left",
                 variant === "outline" &&
-                    "border-muted text-muted hover:border-phosphor/40 hover:text-phosphor border text-center",
+                    "border-muted text-muted hover:border-phosphor/40 hover:text-phosphor border text-center transition-colors",
             )}
         >
             <p className="font-syne w-full px-4 font-extrabold">{label}</p>

@@ -3,6 +3,35 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import PricingCard from "@/pages/Home/Pricing/Card";
 
+const EXPLORER_BENEFITS = [
+    <p>Browse and discover all rices</p>,
+    <p>Deploy free rices (one-click Nix)</p>,
+    <p>Upload unlimited rices publicly</p>,
+    <p>4 competition entries per year</p>,
+    <p>Basic earnings dashboard</p>,
+];
+
+const EXPLORER_NO_BENEFITS = [
+    <p>Unlimited competition entries</p>,
+    <p>22x visibility boost</p>,
+    <p>20% discount on premium rices</p>,
+];
+
+const PRO_BENEFITS = [
+    <p>Everything in Explorer</p>,
+    <p className="text-parchment">Unlimited competition entries</p>,
+    <p>
+        <span className="text-parchment">22x visibility</span> in discovery
+        algorithm
+    </p>,
+    <p>
+        <span className="text-parchment">20% off</span> on all premium rices
+    </p>,
+    <p>Priority security audit (6h turnaround)</p>,
+    <p>Featured creator profile placement</p>,
+    <p>Profile customization</p>,
+];
+
 export default function PricingSection() {
     return (
         <Section className="*:w-[min(80%,900px)] *:items-center">
@@ -27,33 +56,19 @@ export default function PricingSection() {
                     price={0}
                     note="Forever free"
                     buttonLabel="Join Waitlist — Free"
-                    buttonVariant="outline"
                     footerText="No credit card. No commitment."
-                    benefits={[
-                        "Browse and discover all rices",
-                        "Deploy free rices (one-click Nix)",
-                        "Upload unlimited rices publicly",
-                        "4 competition entries per year",
-                        "Basic earnings dashboard",
-                    ]}
+                    benefits={EXPLORER_BENEFITS}
+                    noBenefits={EXPLORER_NO_BENEFITS}
                 />
                 <PricingCard
+                    variant="accent"
                     title="RiceHub Pro"
                     badge="Pro Pass"
                     price={9}
                     note="Per month · Cancel anytime · Waitlist members lock this price forever"
                     buttonLabel="Join Waitlist — Pro"
-                    buttonVariant="normal"
                     footerText="Lock in your price forever"
-                    benefits={[
-                        "Everything in Explorer",
-                        "Unlimited competition entries",
-                        "22x visibility in discovery algorithm",
-                        "20% off on all premium rices",
-                        "Priority security audit (6h turnaround)",
-                        "Featured creator profile placement",
-                        "Profile customization",
-                    ]}
+                    benefits={PRO_BENEFITS}
                 />
             </div>
         </Section>
