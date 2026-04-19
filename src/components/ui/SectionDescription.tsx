@@ -1,5 +1,7 @@
+import { ComponentChildren } from "preact";
+
 interface SectionDescriptionProps {
-    text: string;
+    text: ComponentChildren;
 }
 
 export default function SectionDescription({ text }: SectionDescriptionProps) {
