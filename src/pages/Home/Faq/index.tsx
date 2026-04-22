@@ -2,12 +2,18 @@ import Section from "@/components/ui/Section";
 import SectionBadge from "@/components/ui/SectionBadge";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
+import Answers from "@/pages/Home/Faq/Answers";
 import CategorySelector from "@/pages/Home/Faq/CategorySelector";
+import { FAQ_DATA, CategoryLabel, FAQ_CATEGORIES } from "@/pages/Home/Faq/data";
+import { useComputed, useSignal } from "@preact/signals";
 
 export default function FaqSection() {
+    const category = useSignal<CategoryLabel>("General");
+    const items = useComputed(() => FAQ_DATA[category.value]);
+
     return (
-        <Section>
-            <div className="max-w-3/8">
+        <Section className="bg-pitch border-obsidian border-y *:flex-row">
+            <div className="flex-1">
                 <SectionBadge text="FAQ" />
                 <SectionTitle>
                     Every question <i className="text-phosphor">answered.</i>
@@ -21,8 +27,13 @@ export default function FaqSection() {
                     }
                 />
 
-                <CategorySelector />
+                <CategorySelector
+                    categories={FAQ_CATEGORIES}
+                    onSelect={(v) => (category.value = v as CategoryLabel)}
+                />
             </div>
+
+            <Answers items={items.value} />
         </Section>
     );
 }
