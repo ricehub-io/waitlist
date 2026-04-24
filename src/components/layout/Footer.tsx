@@ -82,7 +82,7 @@ export default function Footer() {
             {/* bottom section */}
             <div className="font-dm-mono flex justify-between uppercase">
                 <p className="text-parchment/16 text-2xs tracking-[0.105em]">
-                    © 2026 <span className="text-phosphor">Rice Hub</span> ·
+                    © 2026 <span className="text-phosphor">RiceHub</span> ·
                     Building in stealth · All rights reserved
                 </p>
                 <ul>

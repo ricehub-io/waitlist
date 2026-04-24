@@ -1,4 +1,5 @@
 import FaqSection from "@/pages/Home/Faq";
+import FinalCTASection from "@/pages/Home/FinalCTA";
 import FoundingCreatorsSection from "@/pages/Home/FoundingCreators";
 import HeroSection from "@/pages/Home/Hero";
 import HowItWorksSection from "@/pages/Home/HowItWorks";
@@ -16,6 +17,7 @@ export default function Home() {
             <FoundingCreatorsSection />
             <PricingSection />
             <FaqSection />
+            <FinalCTASection />
         </div>
     );
 }

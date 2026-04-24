@@ -31,7 +31,7 @@ export default function FoundingCreatorsSection() {
                     text="
                     We're selecting 10 founding creators to seed the platform at
                     launch. These are the ricers whose work fills the homepage on
-                    day one — and who get to influence how Rice Hub works before
+                    day one — and who get to influence how RiceHub works before
                     anyone else sees it.
                     "
                 />

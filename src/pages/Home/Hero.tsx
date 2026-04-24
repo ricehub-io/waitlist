@@ -58,7 +58,7 @@ export default function HeroSection() {
                     </h1>
                 </div>
                 <p className="text-parchment/44 text-center font-light">
-                    <span className="text-parchment font-medium">Rice Hub</span>{" "}
+                    <span className="text-parchment font-medium">RiceHub</span>{" "}
                     is a premium marketplace for Linux deskto configurations —
                     with{" "}
                     <span className="text-parchment font-medium">
@@ -212,8 +212,8 @@ const ScrollingText = () => {
                         <Text>
                             <AccentDot />
                             Coming soon{" "}
-                            <span className="text-phosphor">RICE HUB</span> -
-                            THE MARKETPLACE FOR LINUX RICING
+                            <span className="text-phosphor">RICEHUB</span> - THE
+                            MARKETPLACE FOR LINUX RICING
                         </Text>
                         <Text>
                             <AccentDot />
