@@ -1,23 +1,23 @@
 import logo from "@/assets/logo.svg";
 import { useSignal } from "@preact/signals";
 import { motion } from "motion/react";
+import { useLocation } from "preact-iso";
 import { Collapsible } from "radix-ui";
 
 export default function Header() {
+    const { route } = useLocation();
+    const onLogoClick = () => route("/");
+
     return (
-        <header className="border-phosphor/8 font-dm-mono text-muted flex items-center border-b px-6 py-5 text-xs sm:px-11 sm:py-6">
-            <img className="h-8" src={logo} alt="RiceHub" />
+        <header className="border-phosphor/8 font-dm-mono text-muted bg-void sticky top-0 left-0 z-50 flex items-center border-b px-6 py-5 text-xs sm:px-11 sm:py-6">
+            <img className="h-8" src={logo} alt="RH" onClick={onLogoClick} />
 
             {/* small screens */}
             <BurgerMenu />
 
             {/* bigger screens */}
             <div className="hidden flex-1 items-center sm:flex">
-                <nav className="tracking-[0.14em] uppercase">
-                    <Link label="Explore" href="#explore" />
-                    <Link label="How it works" href="#how-it-works" />
-                    <Link label="Creators" href="#creators" />
-                </nav>
+                <Links />
                 <p className="mr-6 ml-auto tracking-[0.14em] uppercase">
                     <span className="text-phosphor">343</span> on waitlist
                 </p>
@@ -45,17 +45,25 @@ const BurgerMenu = () => {
                     )}
                 </button>
             </Collapsible.Trigger>
-            <Collapsible.Content>
-                <p>lorem ipsum</p>
+            <Collapsible.Content className="bg-void border-slate absolute top-[calc(100%+1px)] left-0 w-full border-b px-6 py-4">
+                <Links />
             </Collapsible.Content>
         </Collapsible.Root>
     );
 };
 
+const Links = () => (
+    <nav className="flex flex-col gap-y-4 tracking-[0.14em] uppercase sm:flex-row">
+        <Link label="Explore" href="#explore" />
+        <Link label="How it works" href="#how-it-works" />
+        <Link label="Creators" href="#creators" />
+    </nav>
+);
+
 const Link = ({ label, href }: { label: string; href: string }) => (
     <motion.a
         href={href}
-        className="relative ml-10"
+        className="relative sm:ml-10"
         initial="rest"
         whileHover="hover"
         animate="rest"

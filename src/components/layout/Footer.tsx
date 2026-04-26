@@ -1,6 +1,6 @@
 import NotifyForm from "@/components/ui/NotifyForm";
 
-const Sections = [
+const SECTIONS = [
     {
         title: "Platform",
         links: [
@@ -38,35 +38,38 @@ const Sections = [
     },
 ];
 
-const Tags = ["NixOS Friendly", "Open Source", "r/unixporn"];
+const TAGS = ["NixOS Friendly", "Open Source", "r/unixporn"];
 
 export default function Footer() {
     return (
-        <footer className="border-obsidian border-t px-24 py-10">
-            {/* top section */}
-            <div className="flex justify-between">
-                {/* left side */}
+        <footer className="border-obsidian border-t px-5 py-10 sm:px-24">
+            <div className="flex flex-col justify-between gap-y-6 sm:flex-row">
                 <div>
-                    <h3 className="font-syne mb-2 text-2xl font-extrabold">
+                    <h3 className="font-syne mb-3 text-2xl leading-none font-extrabold">
                         Rice
                         <span className="text-phosphor">Hub</span>
                     </h3>
-                    <i className="font-fraunces text-muted mb-10 block font-light">
+                    <i className="font-fraunces text-muted mb-6 block leading-none font-light sm:mb-10">
                         "Your desktop, authored."
                     </i>
                     <NotifyForm />
                 </div>
-                {/* right side */}
-                <div className="flex gap-10">
-                    {Sections.map(({ title, links }, idx) => (
+
+                <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-10">
+                    {SECTIONS.map(({ title, links }, idx) => (
                         <div key={idx} className="font-epilogue flex flex-col">
-                            <h3 className="mb-6 text-xl">{title}</h3>
+                            <h3 className="mb-4 text-base leading-none sm:mb-6 sm:text-xl">
+                                {title}
+                            </h3>
                             <ul>
                                 {links.map(({ label, href }, lidx) => (
-                                    <li key={lidx} className="not-last:mb-3">
+                                    <li
+                                        key={lidx}
+                                        className="text-2xs leading-none not-last:mb-3 sm:text-sm"
+                                    >
                                         <a
                                             href={href}
-                                            className="text-muted text-sm"
+                                            className="text-parchment/44"
                                         >
                                             {label}
                                         </a>
@@ -77,19 +80,19 @@ export default function Footer() {
                     ))}
                 </div>
             </div>
-            {/* separator */}
-            <div className="mt-11 mb-8 h-px bg-white/7" />
-            {/* bottom section */}
-            <div className="font-dm-mono flex justify-between uppercase">
-                <p className="text-parchment/16 text-2xs tracking-[0.105em]">
+
+            <div className="my-8 h-px bg-white/7 sm:mt-11" />
+
+            <div className="font-dm-mono flex flex-col justify-between gap-y-4 uppercase sm:flex-row">
+                <p className="text-parchment/16 text-2xs leading-none tracking-[0.15em]">
                     © 2026 <span className="text-phosphor">RiceHub</span> ·
                     Building in stealth · All rights reserved
                 </p>
                 <ul>
-                    {Tags.map((text, idx) => (
+                    {TAGS.map((text, idx) => (
                         <li
                             key={idx}
-                            className="bg-phosphor/9 border-phosphor/20 text-phosphor text-3xs inline border px-2.5 py-1 tracking-[0.105em] not-first:ml-1.5"
+                            className="bg-phosphor/9 border-phosphor/20 text-phosphor text-3xs inline-block border px-2.5 py-1 leading-none tracking-[0.225em] not-first:ml-1.5"
                         >
                             {text}
                         </li>

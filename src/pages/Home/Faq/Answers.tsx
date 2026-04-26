@@ -18,11 +18,11 @@ export default function Answers({ items }: AnswersProps) {
 const Item = ({ value, question, answer }: FaqItem & { value: string }) => (
     <Accordion.Item
         value={value}
-        className="bg-obsidian border-slate data-[state=open]:border-phosphor/40 border px-6 py-5 not-last:mb-0.5"
+        className="bg-obsidian border-slate data-[state=open]:border-phosphor/40 border p-4 not-last:mb-0.5 sm:px-6 sm:py-5"
     >
         <Accordion.Header>
-            <Accordion.Trigger className="group data-[state=open]:text-phosphor flex w-full cursor-pointer items-center justify-between">
-                <span className="font-syne leading-none font-bold -tracking-[0.0125em]">
+            <Accordion.Trigger className="group data-[state=open]:text-phosphor flex w-full cursor-pointer items-center justify-between text-left">
+                <span className="font-syne text-sm leading-none font-bold -tracking-[0.0142em] sm:text-base sm:-tracking-[0.0125em]">
                     {question}
                 </span>
                 <span className="text-2xs text-muted group-data-[state=open]:text-phosphor inline-flex items-center justify-center group-data-[state=open]:rotate-45">
@@ -31,8 +31,8 @@ const Item = ({ value, question, answer }: FaqItem & { value: string }) => (
             </Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content className="">
-            <div className="bg-slate my-5 h-px w-full" />
-            <p>{answer}</p>
+            <div className="bg-slate my-4 h-px w-full sm:my-5" />
+            <p className="text-sm leading-normal sm:text-base">{answer}</p>
         </Accordion.Content>
     </Accordion.Item>
 );

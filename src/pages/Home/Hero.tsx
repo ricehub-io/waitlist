@@ -1,5 +1,6 @@
 import tlPolygon from "@/assets/tl_polygon.png";
 import brPolygon from "@/assets/br_polygon.png";
+import smallPolygon from "@/assets/hero_polygon_sm.png";
 import NotifyForm from "@/components/ui/NotifyForm";
 import { ComponentChildren } from "preact";
 import { cn } from "@/lib/utils";
@@ -22,20 +23,27 @@ const CounterItems = [
 // TODO: split hero section into multiple components
 export default function HeroSection() {
     return (
-        <section className="relative flex-1 overflow-hidden">
+        <section className="relative flex-1 overflow-hidden pt-3 sm:pt-0">
             <img
                 src={tlPolygon}
                 alt=""
                 width={247}
                 height={281}
-                className="pointer-events-none absolute top-0 left-0 -z-10"
+                className="pointer-events-none absolute top-0 left-0 -z-10 hidden sm:block"
             />
             <img
                 src={brPolygon}
                 alt=""
                 width={192}
                 height={250}
-                className="pointer-events-none absolute right-0 bottom-10 -z-10"
+                className="pointer-events-none absolute right-0 bottom-10 -z-10 hidden sm:block"
+            />
+            <img
+                src={smallPolygon}
+                alt=""
+                width={64}
+                height={109}
+                className="pointer-events-none absolute top-0 left-0 -z-10 -translate-y-1/3 sm:hidden"
             />
 
             <div className="mx-auto flex w-[min(90%,355px)] flex-col items-center gap-y-6 py-10 sm:w-[min(80%,900px)] sm:gap-y-10 sm:px-0 sm:py-20">

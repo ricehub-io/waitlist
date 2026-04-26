@@ -34,9 +34,9 @@ const PRO_BENEFITS = [
 
 export default function PricingSection() {
     return (
-        <Section className="*:w-[min(80%,900px)] *:items-center">
-            <div className="max-w-5/7 text-center">
-                <p className="text-phosphor font-dm-mono text-2xs leading-none tracking-[0.3em] uppercase">
+        <Section className="*:items-center *:gap-y-10 *:sm:w-[min(80%,900px)]">
+            <div className="text-center sm:max-w-145.5">
+                <p className="text-phosphor font-dm-mono text-3xs sm:text-2xs leading-none tracking-[0.375em] uppercase sm:tracking-[0.3em]">
                     Pricing
                 </p>
                 <SectionTitle>
@@ -44,12 +44,12 @@ export default function PricingSection() {
                 </SectionTitle>
                 <SectionDescription
                     text="
-                Join the waitlist now and lock in early access pricing.
-                The 20% discount for waitlist members is permanent — it never goes away.
-                "
+                    Join the waitlist now and lock in early access pricing.
+                    The 20% discount for waitlist members is permanent — it never goes away."
                 />
             </div>
-            <div className="grid grid-cols-2 gap-6">
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
                 <PricingCard
                     title="Explorer"
                     badge="Free Tier"

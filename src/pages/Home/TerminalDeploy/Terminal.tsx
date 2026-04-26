@@ -21,7 +21,7 @@ const LINES = [
 
 export default function Terminal() {
     return (
-        <div className="terminal bg-terminal border-phosphor/16 overflow-hidden rounded-sm border">
+        <div className="terminal bg-terminal border-phosphor/16 overflow-hidden rounded-sm border select-none">
             <TitleBar />
             <Body />
         </div>

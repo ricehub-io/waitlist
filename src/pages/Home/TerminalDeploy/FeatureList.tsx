@@ -46,17 +46,17 @@ const FEATURES = [
 
 export default function FeatureList() {
     return (
-        <ul className="flex flex-col justify-between py-2">
+        <ul className="flex flex-col justify-between gap-y-4 py-2 sm:gap-y-0">
             {FEATURES.map(({ icon, title, description }) => (
                 <li className="border-obsidian flex items-start gap-4 not-last:border-b not-last:pb-6">
                     <div className="bg-phosphor flex aspect-square items-center justify-center p-2 text-black">
                         {icon}
                     </div>
                     <div>
-                        <h3 className="font-syne mb-1 text-xl leading-none font-bold">
+                        <h3 className="font-syne mb-1 text-base leading-none font-bold sm:text-xl">
                             {title}
                         </h3>
-                        <p className="text-muted *:font-dm-mono">
+                        <p className="text-muted *:font-dm-mono text-sm leading-normal sm:text-base">
                             {description}
                         </p>
                     </div>

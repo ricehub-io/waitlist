@@ -28,7 +28,7 @@ export default function EmailForm({ buttonText, className }: EmailFormProps) {
             <Form.Submit asChild>
                 <button
                     className={cn(
-                        "bg-phosphor text-dark-text font-syne px-6 py-3 leading-none font-extrabold whitespace-nowrap",
+                        "bg-phosphor text-dark-text font-syne cursor-pointer px-6 py-3 leading-none font-extrabold whitespace-nowrap",
                         className,
                     )}
                 >

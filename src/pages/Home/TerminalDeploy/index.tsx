@@ -8,7 +8,7 @@ import Terminal from "@/pages/Home/TerminalDeploy/Terminal";
 export default function TerminalDeploySection() {
     return (
         <Section className="from-phosphor/4 to-phosphor/0 bg-radial to-20% bg-size-[200%_200%] bg-position-[70%_45%]">
-            <div className="max-w-5/8">
+            <div className="sm:max-w-195.5">
                 <SectionBadge text="Zero-breakage deploy" />
                 <SectionTitle>
                     Works on your machine{" "}
@@ -24,7 +24,7 @@ export default function TerminalDeploySection() {
                 />
             </div>
 
-            <div className="grid grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2">
                 <Terminal />
                 <FeatureList />
             </div>

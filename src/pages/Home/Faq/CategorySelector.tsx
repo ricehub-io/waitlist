@@ -12,7 +12,7 @@ export default function CategorySelector({
     onSelect,
 }: CategorySelectorProps) {
     return (
-        <form className="mt-10">
+        <form>
             <RadioGroup.Root
                 defaultValue={categories[0].label}
                 onValueChange={onSelect}
@@ -40,7 +40,9 @@ const Button = ({
                 className="group-has-checked:border-phosphor/24 group-has-checked:bg-phosphor/8 group-has-checked:text-phosphor border-slate text-muted flex w-full cursor-pointer items-center justify-between border px-5 py-3.5 text-xs leading-none"
             >
                 {label}
-                <span className="font-dm-mono">{questionCount}</span>
+                <span className="font-dm-mono text-2xs leading-none">
+                    {questionCount}
+                </span>
             </label>
         </div>
     );

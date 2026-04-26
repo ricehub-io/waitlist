@@ -28,7 +28,7 @@ export default function PricingCard({
     return (
         <div
             className={cn(
-                "border-slate bg-obsidian relative flex overflow-hidden border p-10",
+                "border-slate bg-obsidian relative flex overflow-hidden border p-6 sm:p-10",
                 variant === "accent" && "border-phosphor/20 bg-void",
             )}
         >
@@ -45,16 +45,17 @@ export default function PricingCard({
 
             <div className="z-20 flex h-full w-full flex-col items-start">
                 <p
-                    className={`${variant === "normal" ? "border-slate text-muted border" : "bg-phosphor text-dark-text"} font-dm-mono text-2xs mb-2 px-2.5 py-1 tracking-[0.2em] uppercase`}
+                    className={`${variant === "normal" ? "border-slate text-muted border" : "bg-phosphor text-dark-text"} font-dm-mono text-2xs mb-2 px-2.5 py-1 leading-none tracking-[0.2em] uppercase`}
                 >
                     {badge}
                 </p>
                 <h3 className="font-syne mb-5 text-xl leading-none font-extrabold -tracking-[0.02em]">
                     {title}
                 </h3>
+
                 <p
                     className={cn(
-                        "font-syne mb-2 text-[3.25rem] leading-13 font-extrabold",
+                        "font-syne mb-1 text-[3.25rem] leading-13 font-extrabold sm:mb-2",
                         variant === "accent" && "text-phosphor",
                     )}
                 >
@@ -64,7 +65,8 @@ export default function PricingCard({
                 <p className="font-dm-mono text-parchment/44 text-2xs mb-5 tracking-[0.15em]">
                     {note}
                 </p>
-                <ul className="text-parchment/44 mb-10 leading-none">
+
+                <ul className="text-parchment/44 mb-15 leading-none sm:mb-10">
                     {benefits.map((el, idx) => (
                         <li
                             key={idx}
@@ -82,12 +84,15 @@ export default function PricingCard({
                         </li>
                     ))}
                 </ul>
+
                 <Button
-                    className="mt-auto mb-2 w-full"
+                    className="mt-auto mb-2 w-full!"
                     label={buttonLabel}
                     variant={variant === "normal" ? "outline" : "normal"}
                 />
-                <p className="text-slate text-2xs font-dm-mono text-center tracking-widest">
+                <p
+                    className={`${variant === "accent" ? "text-muted" : "text-slate"} text-2xs font-dm-mono w-full text-center leading-none tracking-widest`}
+                >
                     {footerText}
                 </p>
             </div>

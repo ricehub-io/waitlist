@@ -12,7 +12,7 @@ export default function FaqSection() {
     const items = useComputed(() => FAQ_DATA[category.value]);
 
     return (
-        <Section className="bg-pitch border-obsidian border-y *:flex-row">
+        <Section className="bg-pitch border-obsidian border-y *:gap-y-10 *:sm:flex-row">
             <div className="flex-1">
                 <SectionBadge text="FAQ" />
                 <SectionTitle>
@@ -25,6 +25,7 @@ export default function FaqSection() {
                             on <RedditIcon />
                         </>
                     }
+                    className="mb-6 sm:mb-10"
                 />
 
                 <CategorySelector
@@ -39,13 +40,13 @@ export default function FaqSection() {
 }
 
 const DiscordIcon = () => (
-    <span className="bg-slate inline-flex items-center justify-center p-2">
+    <span className="bg-slate inline-flex items-center justify-center p-1 text-base sm:p-2">
         <i className="hn hn-discord" />
     </span>
 );
 
 const RedditIcon = () => (
-    <span className="bg-phosphor text-void inline-flex items-center justify-center p-2">
+    <span className="bg-phosphor text-void inline-flex items-center justify-center p-1 text-base sm:p-2">
         <i className="hn hn-reddit" />
     </span>
 );

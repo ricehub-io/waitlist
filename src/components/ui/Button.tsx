@@ -29,7 +29,7 @@ export default function Button({
             </p>
             {variant === "normal" && (
                 <motion.div
-                    className="bg-pitch relative h-full overflow-hidden rounded-xs px-3"
+                    className="bg-pitch relative h-full overflow-hidden rounded-xs px-2 sm:px-3"
                     initial="rest"
                     whileHover="hover"
                     animate="rest"

@@ -18,10 +18,9 @@ const SPOTS_TAKEN = 3;
 
 export default function FoundingCreatorsSection() {
     return (
-        // unaimeds: I know I know its not how you're supposed to do that :d
-        <Section className="*:flex-row *:gap-20">
+        <Section className="*:gap-x-20! *:gap-y-10 *:sm:flex-row">
             {/* left panel */}
-            <div className="max-w-3/7">
+            <div className="sm:max-w-3/7">
                 <SectionBadge text="Founding creator program" />
                 <SectionTitle>
                     Shape the platform before it{" "}
@@ -35,12 +34,12 @@ export default function FoundingCreatorsSection() {
                     anyone else sees it.
                     "
                 />
-                <div className="bg-obsidian my-6 h-px w-full" />
+                <div className="bg-obsidian my-4 h-px w-full sm:my-6" />
                 <ul className="mb-6 font-medium">
                     {BENEFITS.map((benefit, idx) => (
                         <li
                             key={idx}
-                            className="flex items-center not-last:mb-4"
+                            className="flex items-center leading-normal not-last:mb-4"
                         >
                             <i className="hn hn-check text-phosphor mr-3 text-xl" />
                             {benefit}
@@ -67,7 +66,7 @@ const SpotsAvailable = () => (
                 />
             ))}
         </div>
-        <p className="font-dm-mono text-parchment/44 text-2xs ml-auto tracking-[0.15em] uppercase">
+        <p className="font-dm-mono text-parchment/44 text-2xs ml-auto leading-none tracking-[0.15em] uppercase">
             <span className="text-phosphor">
                 {SPOTS_TAKEN} / {MAX_SPOTS}
             </span>{" "}

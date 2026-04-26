@@ -38,7 +38,7 @@ export default function HowItWorksSection() {
                     From terminal to <i className="text-phosphor">income.</i>
                 </SectionTitle>
             </div>
-            <ol className="grid grid-cols-3 gap-6">
+            <ol className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-3">
                 {CARDS.map((card, idx) => (
                     <li key={idx}>
                         <StepCard index={idx + 1} {...card} />
@@ -57,7 +57,7 @@ const StepCard = ({
     command,
     output,
 }: Card & { index: number }) => (
-    <div className="bg-void border-obsidian relative flex h-full flex-col gap-10 border p-10">
+    <div className="bg-void border-obsidian relative flex h-full flex-col gap-6 border p-6 sm:gap-10 sm:p-10">
         {/* rectangle in top left corner */}
         <div className="bg-phosphor absolute top-0 left-0 h-2.5 w-6" />
 
@@ -73,14 +73,16 @@ const StepCard = ({
 
         {/* content */}
         <div>
-            <h4 className="font-syne text-xl font-extrabold whitespace-nowrap">
+            <h4 className="font-syne mb-2 text-base leading-none font-extrabold whitespace-nowrap sm:text-xl">
                 {title}
             </h4>
-            <p className="text-muted mt-2 leading-6">{description}</p>
+            <p className="text-muted text-sm leading-6 sm:text-base">
+                {description}
+            </p>
         </div>
 
         {/* terminal */}
-        <div className="bg-pitch border-obsidian text-phosphor text-2xs mt-auto border px-5 py-2.5 leading-4.5">
+        <div className="bg-pitch border-obsidian text-phosphor text-3xs sm:text-2xs mt-auto border px-5 py-2.5 leading-4.5">
             <samp className="font-dm-mono">
                 $ {command}
                 <br />
