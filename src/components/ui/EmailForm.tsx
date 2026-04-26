@@ -8,7 +8,7 @@ interface EmailFormProps {
 
 export default function EmailForm({ buttonText, className }: EmailFormProps) {
     return (
-        <Form.Root className="flex text-xs">
+        <Form.Root className="text-2xs flex sm:text-xs">
             <Form.Field name="email" className="w-full">
                 <Form.Message match="valueMissing">
                     Please enter your email address
@@ -18,7 +18,7 @@ export default function EmailForm({ buttonText, className }: EmailFormProps) {
                 </Form.Message>
                 <Form.Control asChild>
                     <input
-                        className="bg-obsidian border-slate font-dm-mono placeholder-muted text-muted h-full w-full border px-4 tracking-[0.08em] outline-none"
+                        className="bg-obsidian border-slate font-dm-mono placeholder-muted text-muted h-full w-full border px-4 leading-none tracking-widest outline-none sm:tracking-[0.083em]"
                         type="email"
                         placeholder="your@email.com"
                         required
@@ -28,7 +28,7 @@ export default function EmailForm({ buttonText, className }: EmailFormProps) {
             <Form.Submit asChild>
                 <button
                     className={cn(
-                        "bg-phosphor text-dark-text font-syne px-6 py-3 font-extrabold whitespace-nowrap",
+                        "bg-phosphor text-dark-text font-syne px-6 py-3 leading-none font-extrabold whitespace-nowrap",
                         className,
                     )}
                 >

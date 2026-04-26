@@ -43,6 +43,10 @@
     --font-epilogue: "Epilogue", sans-serif;
 }
 
+/* html {
+    @apply text-3xs sm:text-base;
+} */
+
 body {
     @apply bg-void text-parchment min-h-screen;
 }

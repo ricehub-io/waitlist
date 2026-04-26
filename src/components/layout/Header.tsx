@@ -1,22 +1,56 @@
 import logo from "@/assets/logo.svg";
+import { useSignal } from "@preact/signals";
 import { motion } from "motion/react";
+import { Collapsible } from "radix-ui";
 
 export default function Header() {
     return (
-        <header className="border-phosphor/8 font-dm-mono text-muted flex items-center border-b px-11 py-6 text-xs">
+        <header className="border-phosphor/8 font-dm-mono text-muted flex items-center border-b px-6 py-5 text-xs sm:px-11 sm:py-6">
             <img className="h-8" src={logo} alt="RiceHub" />
-            <nav className="tracking-[0.14em] uppercase">
-                <Link label="Explore" href="#explore" />
-                <Link label="How it works" href="#how-it-works" />
-                <Link label="Creators" href="#creators" />
-            </nav>
-            <p className="mr-6 ml-auto tracking-[0.14em] uppercase">
-                <span className="text-phosphor">343</span> on waitlist
-            </p>
-            <JoinButton />
+
+            {/* small screens */}
+            <BurgerMenu />
+
+            {/* bigger screens */}
+            <div className="hidden flex-1 items-center sm:flex">
+                <nav className="tracking-[0.14em] uppercase">
+                    <Link label="Explore" href="#explore" />
+                    <Link label="How it works" href="#how-it-works" />
+                    <Link label="Creators" href="#creators" />
+                </nav>
+                <p className="mr-6 ml-auto tracking-[0.14em] uppercase">
+                    <span className="text-phosphor">343</span> on waitlist
+                </p>
+                <JoinButton />
+            </div>
         </header>
     );
 }
+
+const BurgerMenu = () => {
+    const open = useSignal(false);
+
+    return (
+        <Collapsible.Root
+            className="ml-auto sm:hidden"
+            open={open.value}
+            onOpenChange={(o) => (open.value = o)}
+        >
+            <Collapsible.Trigger asChild>
+                <button className="text-parchment flex items-center justify-center text-2xl">
+                    {open.value ? (
+                        <i class="hn hn-times"></i>
+                    ) : (
+                        <i class="hn hn-bars"></i>
+                    )}
+                </button>
+            </Collapsible.Trigger>
+            <Collapsible.Content>
+                <p>lorem ipsum</p>
+            </Collapsible.Content>
+        </Collapsible.Root>
+    );
+};
 
 const Link = ({ label, href }: { label: string; href: string }) => (
     <motion.a

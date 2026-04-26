@@ -19,6 +19,7 @@ const CounterItems = [
     { value: "99%", label: "Deploy Success Rate" },
 ];
 
+// TODO: split hero section into multiple components
 export default function HeroSection() {
     return (
         <section className="relative flex-1 overflow-hidden">
@@ -37,39 +38,41 @@ export default function HeroSection() {
                 className="pointer-events-none absolute right-0 bottom-10 -z-10"
             />
 
-            <div className="mx-auto flex w-[min(80%,900px)] flex-col items-center gap-10 py-20">
-                <div className="flex flex-col items-center gap-6">
-                    <div className="font-dm-mono text-xs tracking-[0.14em] uppercase">
-                        <p className="bg-phosphor/8 border-phosphor/24 text-phosphor inline-block border px-4 py-2 align-middle font-medium">
+            <div className="mx-auto flex w-[min(90%,355px)] flex-col items-center gap-y-6 py-10 sm:w-[min(80%,900px)] sm:gap-y-10 sm:px-0 sm:py-20">
+                <div className="flex flex-col items-center gap-y-4 sm:gap-y-6">
+                    <div className="font-dm-mono text-3xs tracking-[0.25em] uppercase sm:text-xs sm:tracking-[0.14em]">
+                        <p className="bg-phosphor/8 border-phosphor/24 text-phosphor inline-block border px-2 py-1 align-middle font-medium sm:px-4 sm:py-2">
                             Pre-launch
                         </p>
-                        <div className="border-slate bg-obsidian inline-flex items-center gap-2 border px-4 py-2 align-middle">
+                        <div className="border-slate bg-obsidian inline-flex items-center gap-2 border px-2 py-1 align-middle sm:px-4 sm:py-2">
                             <Dot />
                             <p className="text-amber-alert">
                                 Stealth Mode — Coming Soon
                             </p>
                         </div>
                     </div>
-                    <h1 className="font-fraunces text-center text-[4.875rem] leading-none font-bold -tracking-[0.035em]">
-                        The marketplace for
-                        <br />
-                        Linux ricing{" "}
+                    <h1 className="font-fraunces text-center text-[2.5rem] leading-none font-bold -tracking-[0.025em] sm:text-[4.875rem] sm:-tracking-[0.035em]">
+                        {/* unaimeds: XD top 10 tricks to responsively align text */}
+                        The marketplace for <br className="hidden sm:block" />{" "}
+                        Linux ricing <br className="sm:hidden" />
                         <i className="text-phosphor">is almost here.</i>
                     </h1>
                 </div>
-                <p className="text-parchment/44 text-center font-light">
+
+                <p className="text-parchment/44 text-center text-sm font-light sm:text-base">
                     <span className="text-parchment font-medium">RiceHub</span>{" "}
-                    is a premium marketplace for Linux deskto configurations —
-                    with{" "}
+                    is a premium marketplace for Linux{" "}
+                    <br className="sm:hidden" /> desktop configurations — with{" "}
                     <span className="text-parchment font-medium">
                         one-click Nix Flake deployment
                     </span>
-                    ,<br />
+                    , <br className="hidden sm:block" />
                     creator monetization, and monthly cash competitions. We
                     launch soon. Be first.
                 </p>
+
                 <div>
-                    <div className="grid grid-cols-2 gap-0.5">
+                    <div className="grid grid-cols-1 gap-0.5 sm:grid-cols-2">
                         <Panel>
                             <PanelTextWithDot
                                 text="For buyers"
@@ -77,7 +80,7 @@ export default function HeroSection() {
                             />
                             <div>
                                 <PanelHeading text="Get early access" />
-                                <p className="leading-normal">
+                                <p className="text-sm leading-normal sm:text-base">
                                     Be first to browse and deploy when we go
                                     live. Early access members get a permanent{" "}
                                     <span className="text-phosphor">
@@ -88,7 +91,7 @@ export default function HeroSection() {
                             </div>
                             <div>
                                 <NotifyForm />
-                                <p className="font-dm-mono text-2xs mt-2 tracking-widest">
+                                <p className="font-dm-mono text-3xs sm:text-2xs mt-2 leading-none tracking-[0.125em] sm:tracking-widest">
                                     Early access ={" "}
                                     <span className="text-phosphor">
                                         20% off all rices
@@ -104,7 +107,7 @@ export default function HeroSection() {
                             />
                             <div>
                                 <PanelHeading text="Founding Creator" />
-                                <p className="leading-normal">
+                                <p className="text-sm leading-normal sm:text-base">
                                     We're selecting 10 founding creators to
                                     launch the platform. Your rice on the
                                     homepage.{" "}
@@ -112,7 +115,7 @@ export default function HeroSection() {
                                         Free Pro for life.
                                     </span>
                                 </p>
-                                <ul className="mt-4 list-inside p-0 text-xs">
+                                <ul className="text-3xs mt-2 list-inside p-0 sm:mt-4 sm:text-xs">
                                     {ForCreatorsItems.map((text, idx) => (
                                         <ArrowLi key={idx} text={text} />
                                     ))}
@@ -123,7 +126,7 @@ export default function HeroSection() {
                                     buttonText="Apply Now"
                                     className="bg-cyan"
                                 />
-                                <p className="font-dm-mono text-2xs mt-2 tracking-widest">
+                                <p className="font-dm-mono text-3xs sm:text-2xs mt-2 leading-none tracking-[0.125em] sm:tracking-widest">
                                     Only{" "}
                                     <span className="text-cyan">7 spots</span>{" "}
                                     remaining.
@@ -131,18 +134,19 @@ export default function HeroSection() {
                             </div>
                         </Panel>
                     </div>
-                    <div className="mt-0.5 grid grid-cols-4 gap-0.5">
+
+                    <div className="mt-0.5 grid grid-cols-2 gap-0.5 sm:grid-cols-4">
                         {CounterItems.map(({ value, label }, idx) => (
                             <div
                                 key={idx}
-                                className="border border-white/7 bg-white/2 px-4.5 py-3"
+                                className="flex flex-col justify-center border border-white/7 bg-white/2 p-6 sm:px-4.5 sm:py-3"
                             >
                                 <p
-                                    className={`font-syne mb-1 text-2xl font-extrabold ${idx % 2 == 0 ? "text-phosphor" : ""}`}
+                                    className={`font-syne mb-2.5 text-xl leading-none font-extrabold -tracking-[0.05em] sm:mb-2 sm:text-2xl sm:-tracking-[0.042em] ${idx % 2 == 0 ? "text-phosphor" : ""}`}
                                 >
                                     {value}
                                 </p>
-                                <p className="font-dm-mono text-parchment/44 text-xs tracking-[0.17em] uppercase">
+                                <p className="font-dm-mono text-parchment/44 text-3xs leading-none tracking-[0.25em] uppercase sm:text-xs sm:tracking-[0.17em]">
                                     {label}
                                 </p>
                             </div>
@@ -150,7 +154,7 @@ export default function HeroSection() {
                     </div>
                 </div>
             </div>
-            {/* bottom banner */}
+
             <ScrollingText />
         </section>
     );
@@ -166,7 +170,7 @@ const Dot = ({ className }: { className?: string }) => (
 );
 
 const Panel = ({ children }: { children: ComponentChildren }) => (
-    <div className="border-obsidian bg-pitch text-muted flex flex-1 flex-col gap-10 border p-10">
+    <div className="border-obsidian bg-pitch text-muted flex flex-1 flex-col gap-y-6 border p-6 sm:gap-y-10 sm:p-10">
         {children}
     </div>
 );
@@ -178,20 +182,20 @@ const PanelTextWithDot = ({
     text: string;
     className: string;
 }) => (
-    <p className="font-dm-mono flex items-center gap-2 text-xs tracking-[0.21em] uppercase">
+    <p className="font-dm-mono text-3xs flex items-center gap-2 leading-none tracking-[0.3125em] uppercase sm:text-xs sm:tracking-[0.21em]">
         <Dot className={className} />
         {text}
     </p>
 );
 
 const PanelHeading = ({ text }: { text: string }) => (
-    <h2 className="font-syne text-parchment mb-2 text-xl font-extrabold -tracking-[0.02em]">
+    <h2 className="font-syne text-parchment mb-2 text-base leading-none font-extrabold -tracking-[0.025em] sm:text-xl sm:-tracking-[0.02em]">
         {text}
     </h2>
 );
 
 const ArrowLi = ({ text }: { text: string }) => (
-    <li className="before:text-cyan flex items-center gap-2 before:text-lg before:content-['→']">
+    <li className="before:text-cyan flex items-center gap-2 leading-none before:text-xs before:content-['→'] before:sm:text-lg">
         {text}
     </li>
 );
@@ -199,14 +203,14 @@ const ArrowLi = ({ text }: { text: string }) => (
 const ScrollingText = () => {
     const AccentDot = () => <Dot className="bg-phosphor" />;
     const Text = ({ children }: { children: ComponentChildren }) => (
-        <p className="border-obsidian flex items-center justify-center gap-3 border-r px-7 py-3">
+        <p className="border-obsidian flex items-center justify-center gap-3 border-r px-7 py-3 leading-none">
             {children}
         </p>
     );
 
     return (
         <div className="bg-pitch border-obsidian text-muted w-full border-t border-b">
-            <div className="text-scroll-container font-dm-mono flex text-xs tracking-[0.17em] whitespace-nowrap uppercase">
+            <div className="text-scroll-container font-dm-mono text-3xs flex tracking-[0.25em] whitespace-nowrap uppercase sm:text-xs sm:tracking-[0.17em]">
                 {[0, 1].map((v) => (
                     <div key={v} className="flex shrink-0">
                         <Text>
@@ -217,14 +221,14 @@ const ScrollingText = () => {
                         </Text>
                         <Text>
                             <AccentDot />
-                            LAUNCH COMPETITION OPEN NOW -{" "}
+                            LAUNCH COMPETITION OPEN NOW -
                             <span className="text-phosphor">
                                 SUBMIT YOUR RICE
                             </span>
                         </Text>
                         <Text>
                             <AccentDot />
-                            10 FOUNDING CREATOR SPOTS -{" "}
+                            10 FOUNDING CREATOR SPOTS -
                             <span className="text-cyan">7 REMAINING</span>
                         </Text>
                     </div>
