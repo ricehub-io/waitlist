@@ -11,6 +11,13 @@ export default function SectionDescription({
     className,
 }: SectionDescriptionProps) {
     return (
-        <p className={cn("text-muted tracking-[0.019em]", className)}>{text}</p>
+        <p
+            className={cn(
+                "text-muted text-sm leading-normal tracking-[0.021em] sm:text-base sm:tracking-[0.019em]",
+                className,
+            )}
+        >
+            {text}
+        </p>
     );
 }

@@ -13,7 +13,7 @@ export default function SectionTitle({
     return (
         <h2
             className={cn(
-                "font-fraunces my-4 text-[3.125rem] leading-none font-bold -tracking-[0.03em]",
+                "font-fraunces my-2 text-[2.5rem] leading-tight font-bold -tracking-[0.025em] sm:my-4 sm:text-[3.125rem] sm:leading-none sm:-tracking-[0.03em]",
                 className,
             )}
         >

@@ -13,7 +13,7 @@ export default function RiceCard({
         <div className="bg-obsidian border-slate font-dm-mono relative border">
             <img className="h-full" src={thumbnailUrl} alt="thumbnail" />
             <div className="flex flex-col gap-2 px-4 py-3.5">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between leading-none">
                     <p className="font-syne font-bold -tracking-[0.0125em]">
                         {title}
                     </p>
@@ -23,7 +23,8 @@ export default function RiceCard({
                         <p className="text-parchment/44">Free</p>
                     )}
                 </div>
-                <ul className="text-phosphor text-3xs flex gap-1 tracking-[0.1875em] uppercase">
+
+                <ul className="text-phosphor text-3xs flex gap-1 leading-none tracking-[0.1875em] uppercase">
                     {tags.map((tag, idx) => (
                         <li
                             key={idx}
@@ -33,7 +34,9 @@ export default function RiceCard({
                         </li>
                     ))}
                 </ul>
-                <div className="h-0.5 w-full bg-white/7" />
+
+                <div className="h-px w-full bg-white/7 sm:h-0.5" />
+
                 <div className="flex items-center gap-2">
                     <p className="text-2xs text-slate mr-auto tracking-[0.05em]">
                         Curated with permission

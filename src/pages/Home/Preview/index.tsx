@@ -10,7 +10,7 @@ export default function PreviewSection() {
     return (
         <Section>
             {/* heading */}
-            <div className="max-w-1/2">
+            <div className="sm:max-w-146.25">
                 <SectionBadge text="Preview — At Launch" />
                 <SectionTitle>
                     A taste of what's <i className="text-phosphor">coming.</i>
@@ -26,14 +26,14 @@ export default function PreviewSection() {
             </div>
 
             {/* example rices */}
-            <ul className="grid grid-cols-3 gap-0.5">
+            <ul className="grid grid-cols-1 gap-0.5 sm:grid-cols-3">
                 {DevRices.map((rice, idx) => (
                     <li key={idx}>
                         <RiceCard {...rice} />
                     </li>
                 ))}
                 <li>
-                    <div className="border-slate flex h-full flex-col items-center justify-center gap-4 border-2 border-dashed">
+                    <div className="border-slate flex h-80 flex-col items-center justify-center gap-4 border-2 border-dashed sm:h-full">
                         <button className="bg-phosphor flex aspect-square items-center justify-center p-5 text-black">
                             <i class="hn hn-plus text-4xl" />
                         </button>
@@ -45,12 +45,12 @@ export default function PreviewSection() {
             </ul>
 
             {/* cta */}
-            <div className="bg-phosphor/8 border-phosphor/24 flex items-center justify-between border px-7 py-6">
+            <div className="bg-phosphor/8 border-phosphor/24 flex flex-col items-center justify-between gap-y-4 border p-4 sm:flex-row sm:px-7 sm:py-6">
                 <div>
-                    <h3 className="font-syne mb-1 text-xl font-extrabold">
+                    <h3 className="font-syne mb-2 text-base leading-none font-extrabold sm:text-xl">
                         Have a rice you want featured at launch?
                     </h3>
-                    <p className="font-dm-mono text-parchment/44 text-xs tracking-[0.08em]">
+                    <p className="font-dm-mono text-parchment/44 text-3xs leading-none tracking-[0.125em] sm:text-xs sm:tracking-[0.08em]">
                         Apply for the Founding Creator Program — 7 spots left.
                     </p>
                 </div>

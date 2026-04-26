@@ -17,14 +17,16 @@ export default function Button({
     return (
         <button
             className={cn(
-                "flex h-11 cursor-pointer items-center rounded-xs p-0.5",
+                "flex h-9 w-full cursor-pointer items-center rounded-xs p-0.5 sm:h-11 sm:w-auto",
                 className,
                 variant === "normal" && "bg-phosphor text-void text-left",
                 variant === "outline" &&
                     "border-muted text-muted hover:border-phosphor/40 hover:text-phosphor border text-center transition-colors",
             )}
         >
-            <p className="font-syne w-full px-4 font-extrabold">{label}</p>
+            <p className="font-syne text-2xs w-full px-4 leading-none font-extrabold sm:text-base">
+                {label}
+            </p>
             {variant === "normal" && (
                 <motion.div
                     className="bg-pitch relative h-full overflow-hidden rounded-xs px-3"
