@@ -7,7 +7,10 @@ import Terminal from "@/pages/Home/TerminalDeploy/Terminal";
 
 export default function TerminalDeploySection() {
     return (
-        <Section className="from-phosphor/4 to-phosphor/0 bg-radial to-20% bg-size-[200%_200%] bg-position-[70%_45%]">
+        <Section
+            id="deploy"
+            className="from-phosphor/4 to-phosphor/0 bg-radial to-20% bg-size-[200%_200%] bg-position-[70%_45%]"
+        >
             <div className="sm:max-w-195.5">
                 <SectionBadge text="Zero-breakage deploy" />
                 <SectionTitle>

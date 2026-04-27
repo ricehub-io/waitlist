@@ -9,7 +9,7 @@ import SectionTitle from "@/components/ui/SectionTitle";
 
 export default function FinalCTASection() {
     return (
-        <Section className="sm:py-40">
+        <Section id="final-cta" className="sm:py-40">
             <div className="bg-pitch border-obsidian relative flex flex-col items-center gap-6 border px-5 py-10 sm:gap-10 sm:px-10 sm:py-15 lg:px-15 lg:py-20 xl:px-25">
                 {/* small screen lines */}
                 <img

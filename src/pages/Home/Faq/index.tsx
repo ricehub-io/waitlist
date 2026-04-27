@@ -12,7 +12,10 @@ export default function FaqSection() {
     const items = useComputed(() => FAQ_DATA[category.value]);
 
     return (
-        <Section className="bg-pitch border-obsidian border-y *:gap-y-10 *:xl:flex-row">
+        <Section
+            id="faq"
+            className="bg-pitch border-obsidian border-y *:gap-y-10 *:xl:flex-row"
+        >
             <div className="flex-1">
                 <SectionBadge text="FAQ" />
                 <SectionTitle>

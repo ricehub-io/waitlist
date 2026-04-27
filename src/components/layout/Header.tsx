@@ -6,7 +6,10 @@ import { Collapsible } from "radix-ui";
 
 export default function Header() {
     const { route } = useLocation();
-    const onLogoClick = () => route("/");
+    const onLogoClick = () => {
+        route("/"); // clear path
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     return (
         <header className="border-phosphor/8 font-dm-mono text-muted bg-void sticky top-0 left-0 z-50 flex items-center border-b px-6 py-5 text-xs sm:px-11 sm:py-6">
@@ -54,16 +57,16 @@ const BurgerMenu = () => {
 
 const Links = () => (
     <nav className="flex flex-col gap-y-4 tracking-[0.14em] uppercase sm:flex-row">
-        <Link label="Explore" href="#explore" />
+        <Link label="Explore" href="#preview" />
         <Link label="How it works" href="#how-it-works" />
-        <Link label="Creators" href="#creators" />
+        <Link label="Creators" href="#founding-creators" />
     </nav>
 );
 
 const Link = ({ label, href }: { label: string; href: string }) => (
     <motion.a
         href={href}
-        className="relative sm:not-last:mr-7 lg:ml-10"
+        className="relative sm:max-lg:not-last:mr-7 lg:ml-10"
         initial="rest"
         whileHover="hover"
         animate="rest"

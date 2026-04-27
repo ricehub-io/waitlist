@@ -18,7 +18,10 @@ const SPOTS_TAKEN = 3;
 
 export default function FoundingCreatorsSection() {
     return (
-        <Section className="*:gap-x-20! *:gap-y-10 *:xl:flex-row">
+        <Section
+            id="founding-creators"
+            className="*:gap-x-20! *:gap-y-10 *:xl:flex-row"
+        >
             <div className="xl:max-w-3/7">
                 <SectionBadge text="Founding creator program" />
                 <SectionTitle>

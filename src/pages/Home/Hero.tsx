@@ -23,7 +23,10 @@ const CounterItems = [
 // TODO: split hero section into multiple components
 export default function HeroSection() {
     return (
-        <section className="relative flex-1 overflow-hidden pt-3 sm:pt-0">
+        <section
+            id="hero"
+            className="relative flex-1 overflow-hidden pt-3 sm:pt-0"
+        >
             <img
                 src={tlPolygon}
                 alt=""

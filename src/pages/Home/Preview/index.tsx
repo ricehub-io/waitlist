@@ -8,7 +8,7 @@ import RiceCard from "@/pages/Home/Preview/RiceCard";
 
 export default function PreviewSection() {
     return (
-        <Section>
+        <Section id="preview">
             <div className="lg:max-w-146.25">
                 <SectionBadge text="Preview — At Launch" />
                 <SectionTitle>
@@ -41,7 +41,7 @@ export default function PreviewSection() {
                 </li>
             </ul>
 
-            <div className="bg-phosphor/8 border-phosphor/24 flex flex-col items-center justify-between gap-y-4 border p-4 sm:px-7 sm:py-6 lg:flex-row">
+            <div className="bg-phosphor/8 border-phosphor/24 flex flex-col justify-between gap-y-4 border p-4 sm:px-7 sm:py-6 xl:flex-row xl:items-center">
                 <div>
                     <h3 className="font-syne mb-2 text-base leading-none font-extrabold sm:text-xl">
                         Have a rice you want featured at launch?
@@ -50,7 +50,10 @@ export default function PreviewSection() {
                         Apply for the Founding Creator Program — 7 spots left.
                     </p>
                 </div>
-                <Button className="w-full!" label="Apply as Founding Creator" />
+                <Button
+                    className="w-full! lg:w-fit!"
+                    label="Apply as Founding Creator"
+                />
             </div>
         </Section>
     );

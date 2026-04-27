@@ -31,7 +31,10 @@ const CARDS: Card[] = [
 
 export default function HowItWorksSection() {
     return (
-        <Section className="bg-pitch border-obsidian border-y">
+        <Section
+            id="how-it-works"
+            className="bg-pitch border-obsidian border-y"
+        >
             <div>
                 <SectionBadge text="Simple by design" />
                 <SectionTitle>

@@ -34,7 +34,10 @@ const PRO_BENEFITS = [
 
 export default function PricingSection() {
     return (
-        <Section className="*:items-center *:gap-y-10 *:sm:w-[min(80%,900px)]">
+        <Section
+            id="pricing"
+            className="*:items-center *:gap-y-10 *:sm:w-[min(80%,900px)]"
+        >
             <div className="text-center sm:max-w-145.5">
                 <p className="text-phosphor font-dm-mono text-3xs sm:text-2xs leading-none tracking-[0.375em] uppercase sm:tracking-[0.3em]">
                     Pricing
