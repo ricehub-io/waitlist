@@ -38,7 +38,7 @@ export default function HowItWorksSection() {
                     From terminal to <i className="text-phosphor">income.</i>
                 </SectionTitle>
             </div>
-            <ol className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-3">
+            <ol className="grid grid-cols-1 gap-x-2 gap-y-4 lg:grid-cols-2 lg:gap-y-2 xl:grid-cols-3 2xl:gap-x-6">
                 {CARDS.map((card, idx) => (
                     <li key={idx}>
                         <StepCard index={idx + 1} {...card} />
@@ -57,7 +57,7 @@ const StepCard = ({
     command,
     output,
 }: Card & { index: number }) => (
-    <div className="bg-void border-obsidian relative flex h-full flex-col gap-6 border p-6 sm:gap-10 sm:p-10">
+    <div className="bg-void border-obsidian relative flex h-full flex-col gap-6 border p-6 sm:gap-10 xl:p-10">
         {/* rectangle in top left corner */}
         <div className="bg-phosphor absolute top-0 left-0 h-2.5 w-6" />
 
@@ -73,7 +73,7 @@ const StepCard = ({
 
         {/* content */}
         <div>
-            <h4 className="font-syne mb-2 text-base leading-none font-extrabold whitespace-nowrap sm:text-xl">
+            <h4 className="font-syne mb-2 text-base leading-none font-extrabold sm:text-xl 2xl:whitespace-nowrap">
                 {title}
             </h4>
             <p className="text-muted text-sm leading-6 sm:text-base">

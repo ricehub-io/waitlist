@@ -9,8 +9,7 @@ import RiceCard from "@/pages/Home/Preview/RiceCard";
 export default function PreviewSection() {
     return (
         <Section>
-            {/* heading */}
-            <div className="sm:max-w-146.25">
+            <div className="lg:max-w-146.25">
                 <SectionBadge text="Preview — At Launch" />
                 <SectionTitle>
                     A taste of what's <i className="text-phosphor">coming.</i>
@@ -20,21 +19,19 @@ export default function PreviewSection() {
                     These are real rices from the community, imported with
                     explicit creator permission. They represent the quality and
                     style of configs that will be on the platform at launch.
-                    Every one is Nix Flake compatible.
-                    "
+                    Every one is Nix Flake compatible."
                 />
             </div>
 
-            {/* example rices */}
-            <ul className="grid grid-cols-1 gap-0.5 sm:grid-cols-3">
+            <ul className="grid grid-cols-1 gap-0.5 sm:grid-cols-2 lg:grid-cols-3">
                 {DevRices.map((rice, idx) => (
                     <li key={idx}>
                         <RiceCard {...rice} />
                     </li>
                 ))}
                 <li>
-                    <div className="border-slate flex h-80 flex-col items-center justify-center gap-4 border-2 border-dashed sm:h-full">
-                        <button className="bg-phosphor flex aspect-square items-center justify-center p-5 text-black">
+                    <div className="border-slate flex h-80 flex-col items-center justify-center gap-4 border-2 border-dashed md:h-full">
+                        <button className="bg-phosphor flex aspect-square cursor-pointer items-center justify-center p-5 text-black">
                             <i class="hn hn-plus text-4xl" />
                         </button>
                         <p className="font-syne text-xl font-bold">
@@ -44,8 +41,7 @@ export default function PreviewSection() {
                 </li>
             </ul>
 
-            {/* cta */}
-            <div className="bg-phosphor/8 border-phosphor/24 flex flex-col items-center justify-between gap-y-4 border p-4 sm:flex-row sm:px-7 sm:py-6">
+            <div className="bg-phosphor/8 border-phosphor/24 flex flex-col items-center justify-between gap-y-4 border p-4 sm:px-7 sm:py-6 lg:flex-row">
                 <div>
                     <h3 className="font-syne mb-2 text-base leading-none font-extrabold sm:text-xl">
                         Have a rice you want featured at launch?
@@ -54,7 +50,7 @@ export default function PreviewSection() {
                         Apply for the Founding Creator Program — 7 spots left.
                     </p>
                 </div>
-                <Button label="Apply as Founding Creator" />
+                <Button className="w-full!" label="Apply as Founding Creator" />
             </div>
         </Section>
     );

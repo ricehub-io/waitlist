@@ -10,9 +10,9 @@ export default function RiceCard({
     stars,
 }: RiceDto) {
     return (
-        <div className="bg-obsidian border-slate font-dm-mono relative border">
-            <img className="h-full" src={thumbnailUrl} alt="thumbnail" />
-            <div className="flex flex-col gap-2 px-4 py-3.5">
+        <div className="bg-obsidian border-slate font-dm-mono relative flex h-full flex-col border">
+            <img className="w-full" src={thumbnailUrl} alt="thumbnail" />
+            <div className="flex h-full flex-col gap-2 px-4 py-3.5">
                 <div className="flex items-center justify-between leading-none">
                     <p className="font-syne font-bold -tracking-[0.0125em]">
                         {title}
@@ -35,8 +35,7 @@ export default function RiceCard({
                     ))}
                 </ul>
 
-                <div className="h-px w-full bg-white/7 sm:h-0.5" />
-
+                <div className="mt-auto h-px w-full bg-white/7 sm:h-0.5" />
                 <div className="flex items-center gap-2">
                     <p className="text-2xs text-slate mr-auto tracking-[0.05em]">
                         Curated with permission
@@ -45,6 +44,7 @@ export default function RiceCard({
                     <TextWithIcon text={stars} icon={<StarIcon />} />
                 </div>
             </div>
+
             {/* TODO: use component for this */}
             <p className="text-3xs text-amber-alert bg-dark-text/80 border-amber-alert/30 absolute top-2 left-2 border px-2 py-1 tracking-[0.1875em] uppercase backdrop-blur-xs">
                 At launch

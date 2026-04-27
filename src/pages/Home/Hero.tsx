@@ -60,8 +60,7 @@ export default function HeroSection() {
                         </div>
                     </div>
                     <h1 className="font-fraunces text-center text-[2.5rem] leading-none font-bold -tracking-[0.025em] sm:text-[4.875rem] sm:-tracking-[0.035em]">
-                        {/* unaimeds: XD top 10 tricks to responsively align text */}
-                        The marketplace for <br className="hidden sm:block" />{" "}
+                        The marketplace for <br className="hidden lg:block" />{" "}
                         Linux ricing <br className="sm:hidden" />
                         <i className="text-phosphor">is almost here.</i>
                     </h1>
@@ -74,13 +73,13 @@ export default function HeroSection() {
                     <span className="text-parchment font-medium">
                         one-click Nix Flake deployment
                     </span>
-                    , <br className="hidden sm:block" />
+                    , <br className="hidden lg:block" />
                     creator monetization, and monthly cash competitions. We
                     launch soon. Be first.
                 </p>
 
                 <div>
-                    <div className="grid grid-cols-1 gap-0.5 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-0.5 lg:grid-cols-2">
                         <Panel>
                             <PanelTextWithDot
                                 text="For buyers"
@@ -143,7 +142,7 @@ export default function HeroSection() {
                         </Panel>
                     </div>
 
-                    <div className="mt-0.5 grid grid-cols-2 gap-0.5 sm:grid-cols-4">
+                    <div className="mt-0.5 grid grid-cols-2 gap-0.5 lg:grid-cols-4">
                         {CounterItems.map(({ value, label }, idx) => (
                             <div
                                 key={idx}

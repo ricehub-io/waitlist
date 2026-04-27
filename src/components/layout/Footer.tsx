@@ -42,9 +42,9 @@ const TAGS = ["NixOS Friendly", "Open Source", "r/unixporn"];
 
 export default function Footer() {
     return (
-        <footer className="border-obsidian border-t px-5 py-10 sm:px-24">
-            <div className="flex flex-col justify-between gap-y-6 sm:flex-row">
-                <div>
+        <footer className="border-obsidian border-t px-5 py-10 sm:px-10 xl:px-24">
+            <div className="flex flex-col justify-between gap-y-6 xl:flex-row">
+                <div className="xs:max-w-fit xs:min-w-fit">
                     <h3 className="font-syne mb-3 text-2xl leading-none font-extrabold">
                         Rice
                         <span className="text-phosphor">Hub</span>
@@ -69,7 +69,7 @@ export default function Footer() {
                                     >
                                         <a
                                             href={href}
-                                            className="text-parchment/44"
+                                            className="text-parchment/44 hover:text-phosphor"
                                         >
                                             {label}
                                         </a>
@@ -83,12 +83,12 @@ export default function Footer() {
 
             <div className="my-8 h-px bg-white/7 sm:mt-11" />
 
-            <div className="font-dm-mono flex flex-col justify-between gap-y-4 uppercase sm:flex-row">
+            <div className="font-dm-mono flex flex-col items-center justify-between gap-y-4 uppercase lg:flex-row">
                 <p className="text-parchment/16 text-2xs leading-none tracking-[0.15em]">
                     © 2026 <span className="text-phosphor">RiceHub</span> ·
                     Building in stealth · All rights reserved
                 </p>
-                <ul>
+                <ul className="leading-0">
                     {TAGS.map((text, idx) => (
                         <li
                             key={idx}

@@ -29,7 +29,7 @@ export default function PricingCard({
         <div
             className={cn(
                 "border-slate bg-obsidian relative flex overflow-hidden border p-6 sm:p-10",
-                variant === "accent" && "border-phosphor/20 bg-void",
+                variant === "accent" ? "border-phosphor/20 bg-void" : "",
             )}
         >
             {variant === "accent" && (
@@ -56,7 +56,7 @@ export default function PricingCard({
                 <p
                     className={cn(
                         "font-syne mb-1 text-[3.25rem] leading-13 font-extrabold sm:mb-2",
-                        variant === "accent" && "text-phosphor",
+                        variant === "accent" ? "text-phosphor" : "",
                     )}
                 >
                     <sup className="text-lg">$</sup>

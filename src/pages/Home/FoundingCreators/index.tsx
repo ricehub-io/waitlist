@@ -18,9 +18,8 @@ const SPOTS_TAKEN = 3;
 
 export default function FoundingCreatorsSection() {
     return (
-        <Section className="*:gap-x-20! *:gap-y-10 *:sm:flex-row">
-            {/* left panel */}
-            <div className="sm:max-w-3/7">
+        <Section className="*:gap-x-20! *:gap-y-10 *:xl:flex-row">
+            <div className="xl:max-w-3/7">
                 <SectionBadge text="Founding creator program" />
                 <SectionTitle>
                     Shape the platform before it{" "}
@@ -48,7 +47,7 @@ export default function FoundingCreatorsSection() {
                 </ul>
                 <SpotsAvailable />
             </div>
-            {/* right panel */}
+
             <ApplyForm />
         </Section>
     );
@@ -61,7 +60,9 @@ const SpotsAvailable = () => (
                 <SpotCircle
                     key={idx}
                     className={
-                        idx + 1 <= SPOTS_TAKEN && "bg-phosphor border-phosphor"
+                        idx + 1 <= SPOTS_TAKEN
+                            ? "bg-phosphor border-phosphor"
+                            : ""
                     }
                 />
             ))}
@@ -75,7 +76,7 @@ const SpotsAvailable = () => (
     </div>
 );
 
-const SpotCircle = ({ className }: { className?: string }) => (
+const SpotCircle = ({ className }: { className?: string | undefined }) => (
     <div
         className={cn(
             "bg-founding-creators-spot-circle border-parchment/7 aspect-square w-2.5 rounded-full border",

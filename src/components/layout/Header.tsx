@@ -16,9 +16,9 @@ export default function Header() {
             <BurgerMenu />
 
             {/* bigger screens */}
-            <div className="hidden flex-1 items-center sm:flex">
+            <div className="hidden flex-1 items-center sm:flex sm:justify-end">
                 <Links />
-                <p className="mr-6 ml-auto tracking-[0.14em] uppercase">
+                <p className="mr-6 ml-auto hidden tracking-[0.14em] uppercase lg:block">
                     <span className="text-phosphor">343</span> on waitlist
                 </p>
                 <JoinButton />
@@ -63,7 +63,7 @@ const Links = () => (
 const Link = ({ label, href }: { label: string; href: string }) => (
     <motion.a
         href={href}
-        className="relative sm:ml-10"
+        className="relative sm:not-last:mr-7 lg:ml-10"
         initial="rest"
         whileHover="hover"
         animate="rest"
@@ -95,7 +95,7 @@ const Link = ({ label, href }: { label: string; href: string }) => (
 
 const JoinButton = () => (
     <motion.button
-        className="bg-phosphor font-syne text-dark-text relative cursor-pointer overflow-hidden rounded-xs px-5 py-2.5 text-base font-extrabold"
+        className="bg-phosphor font-syne text-dark-text relative hidden cursor-pointer overflow-hidden rounded-xs px-5 py-2.5 text-base font-extrabold lg:block"
         initial="rest"
         whileHover="hover"
         animate="rest"
