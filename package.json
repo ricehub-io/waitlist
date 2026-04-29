@@ -18,7 +18,8 @@
         "preact-iso": "^2.11.1",
         "radix-ui": "^1.4.3",
         "tailwind-merge": "^3.5.0",
-        "tailwindcss": "^4.2.2"
+        "tailwindcss": "^4.2.2",
+        "zod": "^4.3.6"
     },
     "devDependencies": {
         "@preact/preset-vite": "^2.10.2",
