@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 import { useLocation } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import { Collapsible } from "radix-ui";
-import scrollTo from "@/components/layout/scrollTo";
+import scrollTo from "@/scrollTo";
 
 export default function Header() {
     const { route } = useLocation();

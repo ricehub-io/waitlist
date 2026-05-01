@@ -7,15 +7,18 @@ interface ButtonProps {
     label: string;
     className?: string;
     variant?: ButtonType;
+    onClick?: () => void;
 }
 
 export default function Button({
     label,
     className,
     variant = "normal",
+    onClick,
 }: ButtonProps) {
     return (
         <motion.button
+            onClick={onClick}
             className={cn(
                 "flex h-9 w-full cursor-pointer items-center rounded-xs p-0.5 sm:h-11 sm:w-auto",
                 className,

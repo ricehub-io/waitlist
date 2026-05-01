@@ -5,6 +5,7 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { DevRices } from "@/pages/Home/Preview/data";
 import RiceCard from "@/pages/Home/Preview/RiceCard";
+import scrollTo from "@/scrollTo";
 
 export default function PreviewSection() {
     return (
@@ -53,6 +54,7 @@ export default function PreviewSection() {
                 <Button
                     className="w-full! lg:w-fit!"
                     label="Apply as Founding Creator"
+                    onClick={() => scrollTo("founding-creators")}
                 />
             </div>
         </Section>

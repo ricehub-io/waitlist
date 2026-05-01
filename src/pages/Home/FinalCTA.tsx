@@ -7,6 +7,7 @@ import Section from "@/components/ui/Section";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { waitlistCount } from "@/state";
+import scrollTo from "@/scrollTo";
 
 export default function FinalCTASection() {
     return (
@@ -60,11 +61,15 @@ export default function FinalCTASection() {
 
                 <div className="z-20">
                     <div className="mb-4 grid grid-cols-1 gap-x-6 gap-y-4 lg:grid-cols-2">
-                        <Button label="Join the Waitlist" />
+                        <Button
+                            label="Join the Waitlist"
+                            onClick={() => scrollTo("join-waitlist")}
+                        />
                         <Button
                             label="Apply as Founding Creator"
                             variant="outline"
                             className="bg-pitch"
+                            onClick={() => scrollTo("founding-creators")}
                         />
                     </div>
                     <p className="font-dm-mono text-3xs sm:text-2xs text-slate text-center leading-none tracking-[0.25em] uppercase sm:tracking-[0.2em]">

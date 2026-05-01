@@ -1,4 +1,4 @@
-import { apiFetch, HttpError, HttpStatus } from "@/api";
+import { apiFetch, HttpStatus } from "@/api";
 import EmailForm from "@/components/ui/EmailForm";
 import { useSignal } from "@preact/signals";
 import { TargetedEvent } from "preact";
@@ -8,6 +8,18 @@ import { Toast } from "radix-ui";
 export default function NotifyForm() {
     const toastOpen = useSignal(false);
     const timerRef = useRef(0);
+    const toastTitle = useSignal("");
+    const toastMsg = useSignal("");
+
+    const openToast = (title: string, msg: string) => {
+        toastOpen.value = false;
+        clearTimeout(timerRef.current);
+        timerRef.current = setTimeout(() => {
+            toastTitle.value = title;
+            toastMsg.value = msg;
+            toastOpen.value = true;
+        }, 100);
+    };
 
     useEffect(() => {
         return () => clearTimeout(timerRef.current);
@@ -17,38 +29,37 @@ export default function NotifyForm() {
         e.preventDefault();
         const data = new FormData(e.currentTarget);
         try {
-            await apiFetch("POST", "/waitlist", data);
-        } catch (err) {
-            if (err instanceof HttpError) {
-                if (err.status === HttpStatus.Conflict) {
-                    toastOpen.value = false;
-                    clearTimeout(timerRef.current);
-                    timerRef.current = setTimeout(() => {
-                        toastOpen.value = true;
-                    }, 100);
-                    return;
-                }
+            const [status] = await apiFetch("POST", "/waitlist", data);
+            if (status !== HttpStatus.Created) {
+                return;
             }
-            console.error("could not post waitlist email");
-            console.error(err);
+            openToast(
+                "Subscribed",
+                "your email has been added to the wailist!",
+            );
+        } catch (err) {
+            let msg = "Please try again later!";
+            if (err instanceof Error) {
+                msg = err.message;
+            }
+            openToast("Could not subscribe", msg);
         }
     };
 
     return (
-        // TODO: add sliding animation when opening a toast
-        <Toast.Provider swipeDirection="up">
+        <>
             <EmailForm buttonText="Notify Me" onSubmit={onSubmit} />
 
             <Toast.Root
                 open={toastOpen.value}
                 onOpenChange={(o) => (toastOpen.value = o)}
+                className="toast-root bg-pitch border border-white/7 px-6 py-4"
             >
-                <Toast.Title>Something went wrong</Toast.Title>
-                <Toast.Description>
-                    Lorem ipsum dolor sit amet
-                </Toast.Description>
+                <Toast.Title className="text-parchment text-lg font-bold">
+                    {toastTitle}
+                </Toast.Title>
+                <Toast.Description>{toastMsg}</Toast.Description>
             </Toast.Root>
-            <Toast.Viewport className="fixed top-4 left-1/2 z-50 -translate-x-1/2" />
-        </Toast.Provider>
+        </>
     );
 }

@@ -1,5 +1,5 @@
 import NotifyForm from "@/components/ui/NotifyForm";
-import scrollTo from "@/components/layout/scrollTo";
+import scrollTo from "@/scrollTo";
 
 interface SectionLink {
     label: string;
