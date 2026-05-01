@@ -4,16 +4,7 @@ import { marked } from "marked";
 import { useSignal } from "@preact/signals";
 import moment from "moment";
 import NotFound from "@/pages/_404";
-
-class HttpError extends Error {
-    constructor(
-        public readonly status: number,
-        message: string,
-    ) {
-        super(message);
-        this.name = "ApiError";
-    }
-}
+import { HttpError } from "@/api";
 
 interface LegalDocProps {
     filename: string;

@@ -1,14 +1,23 @@
 import { cn } from "@/lib/utils";
+import { TargetedEvent } from "preact";
 import { Form } from "radix-ui";
 
 interface EmailFormProps {
     buttonText: string;
     className?: string;
+    onSubmit?: (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => void;
 }
 
-export default function EmailForm({ buttonText, className }: EmailFormProps) {
+export default function EmailForm({
+    buttonText,
+    className,
+    onSubmit,
+}: EmailFormProps) {
     return (
-        <Form.Root className="text-2xs relative flex sm:text-xs">
+        <Form.Root
+            onSubmit={onSubmit}
+            className="text-2xs relative flex sm:text-xs"
+        >
             <Form.Field name="email" className="w-full">
                 <div className="text-signal-red absolute left-0 -translate-y-full font-medium">
                     <Form.Message match="valueMissing">

@@ -3,9 +3,19 @@ import * as z from "zod";
 
 const API_URL = "http://127.0.0.1:3000";
 
+export class HttpError extends Error {
+    constructor(
+        public readonly status: number,
+        message: string,
+    ) {
+        super(message);
+        this.name = "ApiError";
+    }
+}
+
 type RequestMethod = "GET" | "POST" | "PATCH" | "DELETE";
 type RequestBody = string | FormData | null;
-enum HttpStatus {
+export enum HttpStatus {
     Ok = 200,
     Created = 201,
 
@@ -40,7 +50,7 @@ export async function apiFetch<T extends z.ZodType>(
         const err = parsed.success
             ? parsed.data.errors[0]
             : "Could not reach API";
-        throw new Error(err);
+        throw new HttpError(res.status, err);
     }
 
     if (!schema) return [res.status, null];
