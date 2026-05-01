@@ -12,6 +12,7 @@ interface PricingCardProps {
     variant?: "normal" | "accent";
     buttonLabel: string;
     footerText: string;
+    onJoin?: () => void;
 }
 
 export default function PricingCard({
@@ -24,6 +25,7 @@ export default function PricingCard({
     variant = "normal",
     buttonLabel,
     footerText,
+    onJoin,
 }: PricingCardProps) {
     return (
         <div
@@ -89,6 +91,7 @@ export default function PricingCard({
                     className="mt-auto mb-2 w-full!"
                     label={buttonLabel}
                     variant={variant === "normal" ? "outline" : "normal"}
+                    onClick={onJoin}
                 />
                 <p
                     className={`${variant === "accent" ? "text-muted" : "text-slate"} text-2xs font-dm-mono w-full text-center leading-none tracking-widest`}

@@ -3,7 +3,7 @@ import Section from "@/components/ui/Section";
 import SectionBadge from "@/components/ui/SectionBadge";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { DevRices } from "@/pages/Home/Preview/data";
+import { RICES } from "@/pages/Home/Preview/data";
 import RiceCard from "@/pages/Home/Preview/RiceCard";
 import scrollTo from "@/scrollTo";
 
@@ -25,7 +25,7 @@ export default function PreviewSection() {
             </div>
 
             <ul className="grid grid-cols-1 gap-0.5 sm:grid-cols-2 lg:grid-cols-3">
-                {DevRices.map((rice, idx) => (
+                {RICES.map((rice, idx) => (
                     <li key={idx}>
                         <RiceCard {...rice} />
                     </li>

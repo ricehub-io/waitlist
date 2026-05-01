@@ -1,6 +1,6 @@
-import { RiceDto } from "@/types/dto";
+import { RiceCard } from "@/types";
 
-export const DevRices: RiceDto[] = [
+export const RICES: RiceCard[] = [
     {
         title: "Dracula eww Dashboard",
         price: 15.0,

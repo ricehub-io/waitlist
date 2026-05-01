@@ -1,4 +1,4 @@
-import { RiceDto } from "@/types/dto";
+import { RiceCard } from "@/types";
 import { ComponentChildren } from "preact";
 
 export default function RiceCard({
@@ -8,7 +8,7 @@ export default function RiceCard({
     tags,
     downloads,
     stars,
-}: RiceDto) {
+}: RiceCard) {
     return (
         <div className="bg-obsidian border-slate font-dm-mono relative flex h-full flex-col border">
             <img className="w-full" src={thumbnailUrl} alt="thumbnail" />

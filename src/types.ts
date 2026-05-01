@@ -1,13 +1,14 @@
 import * as z from "zod";
 
-export interface RiceDto {
-    title: string;
-    price?: number;
-    thumbnailUrl: string;
-    tags: string[];
-    downloads: number;
-    stars: number;
-}
+export const RiceCardSchema = z.object({
+    title: z.string(),
+    price: z.number().optional(),
+    thumbnailUrl: z.url(),
+    tags: z.string().array(),
+    downloads: z.number(),
+    stars: z.number(),
+});
+export type RiceCard = z.infer<typeof RiceCardSchema>;
 
 export const ErrorSchema = z.object({
     errors: z.string().array(),

@@ -2,6 +2,7 @@ import Section from "@/components/ui/Section";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import PricingCard from "@/pages/Home/Pricing/Card";
+import scrollTo from "@/scrollTo";
 
 const EXPLORER_BENEFITS = [
     <p>Browse and discover all rices</p>,
@@ -62,6 +63,7 @@ export default function PricingSection() {
                     footerText="No credit card. No commitment."
                     benefits={EXPLORER_BENEFITS}
                     noBenefits={EXPLORER_NO_BENEFITS}
+                    onJoin={() => scrollTo("join-waitlist")}
                 />
                 <PricingCard
                     variant="accent"
