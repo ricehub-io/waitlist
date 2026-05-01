@@ -1,14 +1,15 @@
 import * as z from "zod";
 
-export const RiceCardSchema = z.object({
+export const PreviewRiceSchema = z.object({
+    id: z.uuid(),
     title: z.string(),
     price: z.number().optional(),
     thumbnailUrl: z.url(),
     tags: z.string().array(),
-    downloads: z.number(),
-    stars: z.number(),
+    downloadCount: z.number(),
+    starCount: z.number(),
 });
-export type RiceCard = z.infer<typeof RiceCardSchema>;
+export type PreviewRice = z.infer<typeof PreviewRiceSchema>;
 
 export const ErrorSchema = z.object({
     errors: z.string().array(),

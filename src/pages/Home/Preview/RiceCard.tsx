@@ -1,4 +1,4 @@
-import { RiceCard } from "@/types";
+import { PreviewRice } from "@/types";
 import { ComponentChildren } from "preact";
 
 export default function RiceCard({
@@ -6,9 +6,9 @@ export default function RiceCard({
     price,
     thumbnailUrl,
     tags,
-    downloads,
-    stars,
-}: RiceCard) {
+    downloadCount: downloads,
+    starCount: stars,
+}: PreviewRice) {
     return (
         <div className="bg-obsidian border-slate font-dm-mono relative flex h-full flex-col border">
             <img className="w-full" src={thumbnailUrl} alt="thumbnail" />

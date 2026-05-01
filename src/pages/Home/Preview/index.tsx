@@ -1,13 +1,24 @@
+import { apiFetch } from "@/api";
 import Button from "@/components/ui/Button";
 import Section from "@/components/ui/Section";
 import SectionBadge from "@/components/ui/SectionBadge";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
-import { RICES } from "@/pages/Home/Preview/data";
 import RiceCard from "@/pages/Home/Preview/RiceCard";
 import scrollTo from "@/scrollTo";
+import { PreviewRice, PreviewRiceSchema } from "@/types";
+import { useSignal } from "@preact/signals";
+import { useEffect } from "preact/hooks";
 
 export default function PreviewSection() {
+    const rices = useSignal<PreviewRice[]>([]);
+
+    useEffect(() => {
+        apiFetch("GET", "/rices", null, PreviewRiceSchema.array()).then(
+            ([, body]) => (rices.value = body),
+        );
+    }, []);
+
     return (
         <Section id="preview">
             <div className="lg:max-w-146.25">
@@ -25,12 +36,12 @@ export default function PreviewSection() {
             </div>
 
             <ul className="grid grid-cols-1 gap-0.5 sm:grid-cols-2 lg:grid-cols-3">
-                {RICES.map((rice, idx) => (
-                    <li key={idx}>
+                {rices.value.map((rice) => (
+                    <li key={rice.id}>
                         <RiceCard {...rice} />
                     </li>
                 ))}
-                <li>
+                <li className="md:min-h-70">
                     <div className="border-slate flex h-80 flex-col items-center justify-center gap-4 border-2 border-dashed md:h-full">
                         <button className="bg-phosphor flex aspect-square cursor-pointer items-center justify-center p-5 text-black">
                             <i class="hn hn-plus text-4xl" />
