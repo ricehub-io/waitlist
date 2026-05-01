@@ -1,13 +1,10 @@
-import { apiFetch } from "@/api";
 import Section from "@/components/ui/Section";
 import SectionBadge from "@/components/ui/SectionBadge";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { cn } from "@/lib/utils";
 import ApplyForm from "@/pages/Home/FoundingCreators/ApplyForm";
-import { FoundingCreatorStats, FoundingCreatorStatsSchema } from "@/types";
-import { useSignal } from "@preact/signals";
-import { useEffect } from "preact/hooks";
+import { founderStats } from "@/state";
 
 const BENEFITS = [
     "Free Pro subscription for life",
@@ -30,12 +27,11 @@ export default function FoundingCreatorsSection() {
                     <i className="text-phosphor">launches.</i>
                 </SectionTitle>
                 <SectionDescription
-                    text="
-                    We're selecting 10 founding creators to seed the platform at
-                    launch. These are the ricers whose work fills the homepage on
-                    day one — and who get to influence how RiceHub works before
-                    anyone else sees it.
-                    "
+                    text={`
+                    We're selecting ${founderStats.value.slotsTotal} founding creators
+                    to seed the platform at launch. These are the ricers whose
+                    work fills the homepage on day one — and who get to influence
+                    how RiceHub works before anyone else sees it.`}
                 />
                 <div className="bg-obsidian my-4 h-px w-full sm:my-6" />
                 <ul className="mb-6 font-medium">
@@ -57,42 +53,29 @@ export default function FoundingCreatorsSection() {
     );
 }
 
-const SpotsAvailable = () => {
-    const stats = useSignal<FoundingCreatorStats>({
-        slotsTotal: 0,
-        slotsTaken: 0,
-        slotsAvailable: 0,
-    });
-
-    useEffect(() => {
-        apiFetch("GET", "/founders", null, FoundingCreatorStatsSchema).then(
-            ([, body]) => (stats.value = body),
-        );
-    }, []);
-
-    return (
-        <div className="bg-phosphor/8 border-phosphor/24 flex items-center border px-6 py-3">
-            <div className="flex gap-1">
-                {[...Array(stats.value.slotsTotal)].map((_, idx) => (
-                    <SpotCircle
-                        key={idx}
-                        className={
-                            idx + 1 <= stats.value.slotsTaken
-                                ? "bg-phosphor border-phosphor"
-                                : ""
-                        }
-                    />
-                ))}
-            </div>
-            <p className="font-dm-mono text-parchment/44 text-2xs ml-auto leading-none tracking-[0.15em] uppercase">
-                <span className="text-phosphor">
-                    {stats.value.slotsTaken} / {stats.value.slotsTotal}
-                </span>{" "}
-                Spots filled
-            </p>
+const SpotsAvailable = () => (
+    <div className="bg-phosphor/8 border-phosphor/24 flex items-center border px-6 py-3">
+        <div className="flex gap-1">
+            {[...Array(founderStats.value.slotsTotal)].map((_, idx) => (
+                <SpotCircle
+                    key={idx}
+                    className={
+                        idx + 1 <= founderStats.value.slotsTaken
+                            ? "bg-phosphor border-phosphor"
+                            : ""
+                    }
+                />
+            ))}
         </div>
-    );
-};
+        <p className="font-dm-mono text-parchment/44 text-2xs ml-auto leading-none tracking-[0.15em] uppercase">
+            <span className="text-phosphor">
+                {founderStats.value.slotsTaken} /{" "}
+                {founderStats.value.slotsTotal}
+            </span>{" "}
+            Spots filled
+        </p>
+    </div>
+);
 
 const SpotCircle = ({ className }: { className?: string | undefined }) => (
     <div

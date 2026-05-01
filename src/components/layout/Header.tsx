@@ -1,15 +1,27 @@
+import { apiFetch } from "@/api";
 import logo from "@/assets/logo.svg";
+import { waitlistCount } from "@/state";
+import { WaitlistEmailCountSchema } from "@/types";
 import { useSignal } from "@preact/signals";
 import { motion } from "motion/react";
 import { useLocation } from "preact-iso";
+import { useEffect } from "preact/hooks";
 import { Collapsible } from "radix-ui";
+import scrollTo from "@/components/layout/scrollTo";
 
 export default function Header() {
     const { route } = useLocation();
+
     const onLogoClick = () => {
         route("/"); // clear path
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+    useEffect(() => {
+        apiFetch("GET", "/waitlist", null, WaitlistEmailCountSchema).then(
+            ([, body]) => (waitlistCount.value = body.count),
+        );
+    }, []);
 
     return (
         <header className="border-phosphor/8 font-dm-mono text-muted bg-void sticky top-0 left-0 z-50 flex items-center border-b px-6 py-5 text-xs sm:px-11 sm:py-6">
@@ -22,7 +34,8 @@ export default function Header() {
             <div className="hidden flex-1 items-center sm:flex sm:justify-end">
                 <Links />
                 <p className="mr-6 ml-auto hidden tracking-[0.14em] uppercase lg:block">
-                    <span className="text-phosphor">343</span> on waitlist
+                    <span className="text-phosphor">{waitlistCount}</span> on
+                    waitlist
                 </p>
                 <JoinButton />
             </div>
@@ -56,17 +69,17 @@ const BurgerMenu = () => {
 };
 
 const Links = () => (
-    <nav className="flex flex-col gap-y-4 tracking-[0.14em] uppercase sm:flex-row">
-        <Link label="Explore" href="#preview" />
-        <Link label="How it works" href="#how-it-works" />
-        <Link label="Creators" href="#founding-creators" />
+    <nav className="flex flex-col gap-y-4 tracking-[0.167em] uppercase sm:flex-row">
+        <Link label="Explore" onClick={() => scrollTo("hero")} />
+        <Link label="How it works" onClick={() => scrollTo("how-it-works")} />
+        <Link label="Creators" onClick={() => scrollTo("founding-creators")} />
     </nav>
 );
 
-const Link = ({ label, href }: { label: string; href: string }) => (
-    <motion.a
-        href={href}
-        className="relative sm:max-lg:not-last:mr-7 lg:ml-10"
+const Link = ({ label, onClick }: { label: string; onClick: () => void }) => (
+    <motion.button
+        className="relative cursor-pointer leading-none uppercase sm:max-lg:not-last:mr-7 lg:ml-10"
+        onClick={onClick}
         initial="rest"
         whileHover="hover"
         animate="rest"
@@ -93,11 +106,12 @@ const Link = ({ label, href }: { label: string; href: string }) => (
                 },
             }}
         />
-    </motion.a>
+    </motion.button>
 );
 
 const JoinButton = () => (
     <motion.button
+        onClick={() => scrollTo("join-waitlist")}
         className="bg-phosphor font-syne text-dark-text relative hidden cursor-pointer overflow-hidden rounded-xs px-5 py-2.5 text-base font-extrabold lg:block"
         initial="rest"
         whileHover="hover"

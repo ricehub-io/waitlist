@@ -1,39 +1,40 @@
 import NotifyForm from "@/components/ui/NotifyForm";
+import scrollTo from "@/components/layout/scrollTo";
 
-const SECTIONS = [
+interface SectionLink {
+    label: string;
+    anchorId?: string;
+    href?: string;
+}
+interface Section {
+    title: string;
+    links: SectionLink[];
+}
+const SECTIONS: Section[] = [
     {
         title: "Platform",
         links: [
-            { label: "Join Waitlist", href: "#" },
-            { label: "Enter Competition", href: "#" },
-            { label: "How It Works", href: "#" },
-            { label: "Pricing", href: "#" },
+            { label: "Join Waitlist", anchorId: "join-waitlist" },
+            { label: "How It Works", anchorId: "how-it-works" },
+            { label: "Pricing", anchorId: "pricing" },
         ],
     },
     {
         title: "Creators",
-        links: [
-            { label: "Founding Program", href: "#" },
-            { label: "Revenue Share", href: "#" },
-            { label: "IP Guidelines", href: "#" },
-        ],
+        links: [{ label: "Founding Program", anchorId: "founding-creators" }],
     },
     {
         title: "Company",
         links: [
-            { label: "About", href: "#" },
-            { label: "Blog", href: "#" },
-            { label: "Discord", href: "#" },
-            { label: "Reddit", href: "#" },
+            { label: "GitHub", href: "https://github.com/ricehub-io" },
+            { label: "Discord", href: "https://discord.gg/z7Zu8MeTdG" },
         ],
     },
     {
         title: "Legal",
         links: [
-            { label: "Terms of Service", href: "#" },
-            { label: "Privacy Policy", href: "#" },
-            { label: "Competition Rules", href: "#" },
-            { label: "Creator Agreement", href: "#" },
+            { label: "Terms of Service", href: "/legal/terms-of-service" },
+            { label: "Privacy Policy", href: "/legal/privacy-policy" },
         ],
     },
 ];
@@ -62,19 +63,38 @@ export default function Footer() {
                                 {title}
                             </h3>
                             <ul>
-                                {links.map(({ label, href }, lidx) => (
-                                    <li
-                                        key={lidx}
-                                        className="text-2xs leading-none not-last:mb-3 sm:text-sm"
-                                    >
-                                        <a
-                                            href={href}
-                                            className="text-parchment/44 hover:text-phosphor"
+                                {links.map(
+                                    ({ label, anchorId, href }, lidx) => (
+                                        <li
+                                            key={lidx}
+                                            className="text-2xs text-parchment/44 hover:text-phosphor leading-none transition-colors not-last:mb-3 sm:text-sm"
                                         >
-                                            {label}
-                                        </a>
-                                    </li>
-                                ))}
+                                            {anchorId !== undefined ? (
+                                                <input
+                                                    className="cursor-pointer"
+                                                    type="button"
+                                                    value={label}
+                                                    onClick={() =>
+                                                        scrollTo(anchorId)
+                                                    }
+                                                />
+                                            ) : (
+                                                <a
+                                                    href={href}
+                                                    target={
+                                                        href?.startsWith(
+                                                            "https://",
+                                                        )
+                                                            ? "_blank"
+                                                            : "_self"
+                                                    }
+                                                >
+                                                    {label}
+                                                </a>
+                                            )}
+                                        </li>
+                                    ),
+                                )}
                             </ul>
                         </div>
                     ))}

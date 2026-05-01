@@ -8,6 +8,7 @@ import NotFound from "@/pages/_404";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { MotionConfig } from "motion/react";
+import LegalDoc from "@/pages/legal";
 
 export function App() {
     return (
@@ -19,6 +20,7 @@ export function App() {
                 <main className="font-epilogue flex flex-1 flex-col">
                     <Router>
                         <Route path="/" component={Home} />
+                        <Route path="/legal/:filename" component={LegalDoc} />
                         <Route default component={NotFound} />
                     </Router>
                 </main>

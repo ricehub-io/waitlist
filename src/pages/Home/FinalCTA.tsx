@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import Section from "@/components/ui/Section";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
+import { waitlistCount } from "@/state";
 
 export default function FinalCTASection() {
     return (
@@ -50,10 +51,10 @@ export default function FinalCTASection() {
                     </SectionTitle>
                     <SectionDescription
                         className="text-base tracking-normal! sm:text-xl"
-                        text="
-                        340 ricers are already waiting. Join them and get early
-                        access, permanent pricing, and the chance to shape
-                        the platform before it goes public."
+                        text={`
+                        ${waitlistCount.value} ricers are already waiting.
+                        Join them and get early access, permanent pricing,
+                        and the chance to shape the platform before it goes public.`}
                     />
                 </div>
 

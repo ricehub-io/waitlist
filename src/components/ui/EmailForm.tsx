@@ -8,14 +8,16 @@ interface EmailFormProps {
 
 export default function EmailForm({ buttonText, className }: EmailFormProps) {
     return (
-        <Form.Root className="text-2xs flex sm:text-xs">
+        <Form.Root className="text-2xs relative flex sm:text-xs">
             <Form.Field name="email" className="w-full">
-                <Form.Message match="valueMissing">
-                    Please enter your email address
-                </Form.Message>
-                <Form.Message match="typeMismatch">
-                    Please provide a valid email address
-                </Form.Message>
+                <div className="text-signal-red absolute left-0 -translate-y-full font-medium">
+                    <Form.Message match="valueMissing">
+                        Please enter your email address!
+                    </Form.Message>
+                    <Form.Message match="typeMismatch">
+                        Please provide a valid email address!
+                    </Form.Message>
+                </div>
                 <Form.Control asChild>
                     <input
                         className="bg-obsidian border-slate font-dm-mono placeholder-muted text-muted h-full w-full border px-4 leading-none tracking-widest outline-none sm:tracking-[0.083em]"

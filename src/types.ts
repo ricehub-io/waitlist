@@ -19,3 +19,7 @@ export const FoundingCreatorStatsSchema = z.object({
     slotsAvailable: z.number(),
 });
 export type FoundingCreatorStats = z.infer<typeof FoundingCreatorStatsSchema>;
+
+export const WaitlistEmailCountSchema = z.object({
+    count: z.number(),
+});

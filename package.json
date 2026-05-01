@@ -3,7 +3,7 @@
     "type": "module",
     "packageManager": "pnpm@10.32.1",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "vite build",
         "preview": "vite preview",
         "format": "prettier --check .",
@@ -13,6 +13,9 @@
         "@hackernoon/pixel-icon-library": "^1.0.6",
         "@preact/signals": "^2.9.0",
         "@tailwindcss/vite": "^4.2.2",
+        "front-matter": "^4.0.2",
+        "marked": "^18.0.2",
+        "moment": "^2.30.1",
         "motion": "^12.38.0",
         "preact": "^10.26.9",
         "preact-iso": "^2.11.1",

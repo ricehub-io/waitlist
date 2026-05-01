@@ -29,6 +29,7 @@
     /* Neon */
     --color-amber-alert: #ff9f0a;
     --color-cyan: #00d4ff;
+    --color-signal-red: #ff4d6d;
 
     /* idk whats the name of it */
     /* its not in the brand design system */
@@ -75,4 +76,21 @@ body {
     100% {
         transform: translateX(-100%);
     }
+}
+
+/* markdown styling */
+.markdown h2 {
+    @apply mb-1 text-2xl font-bold not-first:mt-8;
+}
+
+.markdown p {
+    @apply mb-2;
+}
+
+.markdown ul {
+    @apply mb-2 list-inside list-disc pl-4;
+}
+
+.markdown a {
+    @apply text-phosphor underline;
 }

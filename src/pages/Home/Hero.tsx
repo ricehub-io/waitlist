@@ -5,6 +5,11 @@ import NotifyForm from "@/components/ui/NotifyForm";
 import { ComponentChildren } from "preact";
 import { cn } from "@/lib/utils";
 import EmailForm from "@/components/ui/EmailForm";
+import { founderStats, waitlistCount } from "@/state";
+import { useEffect } from "preact/hooks";
+import { apiFetch } from "@/api";
+import { FoundingCreatorStatsSchema } from "@/types";
+import { computed } from "@preact/signals";
 
 const ForCreatorsItems = [
     "Free Pro subscription — forever, no conditions",
@@ -13,15 +18,22 @@ const ForCreatorsItems = [
     "Founding Creator badge on your profile",
 ];
 
+const foundersConfirmed = computed(() => founderStats.value.slotsTaken);
 const CounterItems = [
-    { value: "343", label: "On waitlist" },
-    { value: "3", label: "Creators confirmed" },
+    { value: waitlistCount, label: "On waitlist" },
+    { value: foundersConfirmed, label: "Creators confirmed" },
     { value: "Free Pro", label: "Competition Prize" },
     { value: "99%", label: "Deploy Success Rate" },
 ];
 
 // TODO: split hero section into multiple components
 export default function HeroSection() {
+    useEffect(() => {
+        apiFetch("GET", "/founders", null, FoundingCreatorStatsSchema).then(
+            ([, body]) => (founderStats.value = body),
+        );
+    }, []);
+
     return (
         <section
             id="hero"
@@ -69,7 +81,10 @@ export default function HeroSection() {
                     </h1>
                 </div>
 
-                <p className="text-parchment/44 text-center text-sm font-light sm:text-base">
+                <p
+                    id="join-waitlist"
+                    className="text-parchment/44 text-center text-sm font-light sm:text-base"
+                >
                     <span className="text-parchment font-medium">RiceHub</span>{" "}
                     is a premium marketplace for Linux{" "}
                     <br className="sm:hidden" /> desktop configurations — with{" "}
@@ -118,9 +133,10 @@ export default function HeroSection() {
                             <div>
                                 <PanelHeading text="Founding Creator" />
                                 <p className="text-sm leading-normal sm:text-base">
-                                    We're selecting 10 founding creators to
-                                    launch the platform. Your rice on the
-                                    homepage.{" "}
+                                    We're selecting{" "}
+                                    {founderStats.value.slotsTotal} founding
+                                    creators to launch the platform. Your rice
+                                    on the homepage.{" "}
                                     <span className="text-cyan">
                                         Free Pro for life.
                                     </span>
@@ -138,7 +154,10 @@ export default function HeroSection() {
                                 />
                                 <p className="font-dm-mono text-3xs sm:text-2xs mt-2 leading-none tracking-[0.125em] sm:tracking-widest">
                                     Only{" "}
-                                    <span className="text-cyan">7 spots</span>{" "}
+                                    <span className="text-cyan">
+                                        {founderStats.value.slotsAvailable}{" "}
+                                        spots
+                                    </span>{" "}
                                     remaining.
                                 </p>
                             </div>
@@ -179,8 +198,17 @@ const Dot = ({ className }: { className?: string }) => (
     />
 );
 
-const Panel = ({ children }: { children: ComponentChildren }) => (
-    <div className="border-obsidian bg-pitch text-muted flex flex-1 flex-col gap-y-6 border p-6 sm:gap-y-10 sm:p-10">
+const Panel = ({
+    id,
+    children,
+}: {
+    id?: string;
+    children: ComponentChildren;
+}) => (
+    <div
+        id={id}
+        className="border-obsidian bg-pitch text-muted flex flex-1 flex-col gap-y-6 border p-6 sm:gap-y-10 sm:p-10"
+    >
         {children}
     </div>
 );
@@ -220,8 +248,8 @@ const ScrollingText = () => {
 
     return (
         <div className="bg-pitch border-obsidian text-muted w-full border-t border-b">
-            <div className="text-scroll-container font-dm-mono text-3xs flex tracking-[0.25em] whitespace-nowrap uppercase sm:text-xs sm:tracking-[0.17em]">
-                {[0, 1].map((v) => (
+            <div className="text-scroll-container font-dm-mono text-3xs flex overflow-clip tracking-[0.25em] whitespace-nowrap uppercase sm:text-xs sm:tracking-[0.17em]">
+                {[0, 1, 2].map((v) => (
                     <div key={v} className="flex shrink-0">
                         <Text>
                             <AccentDot />
@@ -231,15 +259,11 @@ const ScrollingText = () => {
                         </Text>
                         <Text>
                             <AccentDot />
-                            LAUNCH COMPETITION OPEN NOW -
-                            <span className="text-phosphor">
-                                SUBMIT YOUR RICE
+                            {founderStats.value.slotsTotal} FOUNDING CREATOR
+                            SPOTS -
+                            <span className="text-cyan">
+                                {founderStats.value.slotsAvailable} REMAINING
                             </span>
-                        </Text>
-                        <Text>
-                            <AccentDot />
-                            10 FOUNDING CREATOR SPOTS -
-                            <span className="text-cyan">7 REMAINING</span>
                         </Text>
                     </div>
                 ))}

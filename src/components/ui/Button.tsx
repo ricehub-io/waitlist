@@ -15,7 +15,7 @@ export default function Button({
     variant = "normal",
 }: ButtonProps) {
     return (
-        <button
+        <motion.button
             className={cn(
                 "flex h-9 w-full cursor-pointer items-center rounded-xs p-0.5 sm:h-11 sm:w-auto",
                 className,
@@ -24,17 +24,15 @@ export default function Button({
                     ? "border-muted text-muted hover:border-phosphor/40 hover:text-phosphor border text-center transition-colors"
                     : "",
             )}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
         >
             <p className="font-syne text-2xs w-full px-4 leading-none font-extrabold sm:text-base">
                 {label}
             </p>
             {variant === "normal" && (
-                <motion.div
-                    className="bg-pitch relative h-full overflow-hidden rounded-xs px-2 sm:px-3"
-                    initial="rest"
-                    whileHover="hover"
-                    animate="rest"
-                >
+                <div className="bg-pitch relative h-full overflow-hidden rounded-xs px-2 sm:px-3">
                     <div className="invisible flex h-full items-center justify-center">
                         <ArrowIcon />
                     </div>
@@ -52,9 +50,9 @@ export default function Button({
                             hover: { x: "0%" },
                         }}
                     />
-                </motion.div>
+                </div>
             )}
-        </button>
+        </motion.button>
     );
 }
 
