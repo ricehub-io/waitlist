@@ -1,3 +1,4 @@
+import { useLocation } from "preact-iso";
 import NotifyForm from "@/components/ui/NotifyForm";
 import scrollTo from "@/scrollTo";
 
@@ -42,6 +43,17 @@ const SECTIONS: Section[] = [
 const TAGS = ["NixOS Friendly", "Open Source", "r/unixporn"];
 
 export default function Footer() {
+    const { url, route } = useLocation();
+
+    const handleAnchorClick = (anchorId: string) => {
+        if (url === "/") {
+            scrollTo(anchorId);
+        } else {
+            sessionStorage.setItem("scrollToAnchor", anchorId);
+            route("/");
+        }
+    };
+
     return (
         <footer className="border-obsidian border-t px-5 py-10 sm:px-10 xl:px-24">
             <div className="flex flex-col justify-between gap-y-6 xl:flex-row">
@@ -75,7 +87,9 @@ export default function Footer() {
                                                     type="button"
                                                     value={label}
                                                     onClick={() =>
-                                                        scrollTo(anchorId)
+                                                        handleAnchorClick(
+                                                            anchorId,
+                                                        )
                                                     }
                                                 />
                                             ) : (

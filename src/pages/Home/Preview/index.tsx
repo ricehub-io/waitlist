@@ -6,6 +6,7 @@ import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import RiceCard from "@/pages/Home/Preview/RiceCard";
 import scrollTo from "@/scrollTo";
+import { founderStats } from "@/state";
 import { PreviewRice, PreviewRiceSchema } from "@/types";
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
@@ -59,7 +60,8 @@ export default function PreviewSection() {
                         Have a rice you want featured at launch?
                     </h3>
                     <p className="font-dm-mono text-parchment/44 text-3xs leading-none tracking-[0.125em] sm:text-xs sm:tracking-[0.08em]">
-                        Apply for the Founding Creator Program — 7 spots left.
+                        Apply for the Founding Creator Program —{" "}
+                        {founderStats.value.slotsAvailable} spots left.
                     </p>
                 </div>
                 <Button

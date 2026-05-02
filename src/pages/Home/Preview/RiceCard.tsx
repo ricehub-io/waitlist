@@ -1,5 +1,6 @@
 import { PreviewRice } from "@/types";
 import { ComponentChildren } from "preact";
+import { AspectRatio } from "radix-ui";
 
 export default function RiceCard({
     title,
@@ -11,7 +12,13 @@ export default function RiceCard({
 }: PreviewRice) {
     return (
         <div className="bg-obsidian border-slate font-dm-mono relative flex h-full flex-col border">
-            <img className="w-full" src={thumbnailUrl} alt="thumbnail" />
+            <AspectRatio.Root ratio={16 / 9}>
+                <img
+                    className="h-full w-full"
+                    src={thumbnailUrl}
+                    alt="thumbnail"
+                />
+            </AspectRatio.Root>
             <div className="flex h-full flex-col gap-2 px-4 py-3.5">
                 <div className="flex items-center justify-between leading-none">
                     <p className="font-syne font-bold -tracking-[0.0125em]">
@@ -45,18 +52,16 @@ export default function RiceCard({
                 </div>
             </div>
 
-            {/* TODO: use component for this */}
             <p className="text-3xs text-amber-alert bg-dark-text/80 border-amber-alert/30 absolute top-2 left-2 border px-2 py-1 tracking-[0.1875em] uppercase backdrop-blur-xs">
                 At launch
             </p>
-            <p className="text-3xs text-phosphor bg-dark-text/80 border-phosphor/30 absolute top-2 right-2 border px-2 py-1 tracking-[0.1875em] uppercase backdrop-blur-xs">
+            {/* <p className="text-3xs text-phosphor bg-dark-text/80 border-phosphor/30 absolute top-2 right-2 border px-2 py-1 tracking-[0.1875em] uppercase backdrop-blur-xs">
                 Nix ✓
-            </p>
+            </p> */}
         </div>
     );
 }
 
-// TODO: pass class list to icon
 const TextWithIcon = ({
     icon,
     text,
