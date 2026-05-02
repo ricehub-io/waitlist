@@ -1,7 +1,7 @@
 import { ErrorSchema } from "@/types";
 import * as z from "zod";
 
-const API_URL = "http://127.0.0.1:3000";
+const API_URL = window.__APP_CONFIG__?.API_URL ?? "http://127.0.0.1:3000";
 
 export class HttpError extends Error {
     constructor(
