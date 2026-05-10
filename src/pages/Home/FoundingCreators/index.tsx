@@ -57,7 +57,7 @@ const SpotsAvailable = () => (
     <div className="bg-phosphor/8 border-phosphor/24 flex items-center border px-6 py-3">
         <div className="flex gap-1">
             {founderStats.value !== null &&
-                [...Array(slotsTotal)].map((_, idx) => (
+                [...Array(founderStats.value.slotsTotal)].map((_, idx) => (
                     <SpotCircle
                         key={idx}
                         className={

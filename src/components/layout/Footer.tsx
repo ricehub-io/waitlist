@@ -1,11 +1,13 @@
 import { useLocation } from "preact-iso";
 import NotifyForm from "@/components/ui/NotifyForm";
 import scrollTo from "@/scrollTo";
+import { siteConfig } from "@/config";
 
 interface SectionLink {
     label: string;
     anchorId?: string;
     href?: string;
+    hidden?: boolean;
 }
 interface Section {
     title: string;
@@ -16,8 +18,16 @@ const SECTIONS: Section[] = [
         title: "Platform",
         links: [
             { label: "Join Waitlist", anchorId: "join-waitlist" },
-            { label: "How It Works", anchorId: "how-it-works" },
-            { label: "Pricing", anchorId: "pricing" },
+            {
+                label: "How It Works",
+                anchorId: "how-it-works",
+                hidden: !siteConfig.sections.includes("how-it-works"),
+            },
+            {
+                label: "Pricing",
+                anchorId: "pricing",
+                hidden: !siteConfig.sections.includes("pricing"),
+            },
         ],
     },
     {
@@ -76,38 +86,39 @@ export default function Footer() {
                             </h3>
                             <ul>
                                 {links.map(
-                                    ({ label, anchorId, href }, lidx) => (
-                                        <li
-                                            key={lidx}
-                                            className="text-2xs text-parchment/44 hover:text-phosphor leading-none transition-colors not-last:mb-3 sm:text-sm"
-                                        >
-                                            {anchorId !== undefined ? (
-                                                <input
-                                                    className="cursor-pointer"
-                                                    type="button"
-                                                    value={label}
-                                                    onClick={() =>
-                                                        handleAnchorClick(
-                                                            anchorId,
-                                                        )
-                                                    }
-                                                />
-                                            ) : (
-                                                <a
-                                                    href={href}
-                                                    target={
-                                                        href?.startsWith(
-                                                            "https://",
-                                                        )
-                                                            ? "_blank"
-                                                            : "_self"
-                                                    }
-                                                >
-                                                    {label}
-                                                </a>
-                                            )}
-                                        </li>
-                                    ),
+                                    ({ label, anchorId, href, hidden }, lidx) =>
+                                        !hidden && (
+                                            <li
+                                                key={lidx}
+                                                className="text-2xs text-parchment/44 hover:text-phosphor leading-none transition-colors not-last:mb-3 sm:text-sm"
+                                            >
+                                                {anchorId !== undefined ? (
+                                                    <input
+                                                        className="cursor-pointer"
+                                                        type="button"
+                                                        value={label}
+                                                        onClick={() =>
+                                                            handleAnchorClick(
+                                                                anchorId,
+                                                            )
+                                                        }
+                                                    />
+                                                ) : (
+                                                    <a
+                                                        href={href}
+                                                        target={
+                                                            href?.startsWith(
+                                                                "https://",
+                                                            )
+                                                                ? "_blank"
+                                                                : "_self"
+                                                        }
+                                                    >
+                                                        {label}
+                                                    </a>
+                                                )}
+                                            </li>
+                                        ),
                                 )}
                             </ul>
                         </div>

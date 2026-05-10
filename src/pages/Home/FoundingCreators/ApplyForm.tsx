@@ -22,13 +22,17 @@ export default function ApplyForm() {
 
     const onSubmit = async (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
-        const data = new FormData(e.currentTarget);
+
+        const target = e.currentTarget;
+        const data = new FormData(target);
+
         try {
             const [status] = await apiFetch("POST", "/founders", data);
             if (status !== HttpStatus.Created) {
                 return;
             }
             dialogOpen.value = true;
+            target.reset();
         } catch (err) {
             let msg = "Please try again later!";
             if (err instanceof Error) {

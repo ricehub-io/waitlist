@@ -1,5 +1,6 @@
 import { apiFetch, HttpStatus } from "@/api";
 import EmailForm from "@/components/ui/EmailForm";
+import { waitlistCount } from "@/state";
 import { useSignal } from "@preact/signals";
 import { TargetedEvent } from "preact";
 import { useEffect, useRef } from "preact/hooks";
@@ -27,7 +28,11 @@ export default function NotifyForm() {
 
     const onSubmit = async (e: TargetedEvent<HTMLFormElement, SubmitEvent>) => {
         e.preventDefault();
-        const data = new FormData(e.currentTarget);
+        // unaimeds: target needs to be redeclared because we later await
+        // which for some reason causes e.currentTarget to be null afterwards.
+        const target = e.currentTarget;
+        const data = new FormData(target);
+
         try {
             const [status] = await apiFetch("POST", "/waitlist", data);
             if (status !== HttpStatus.Created) {
@@ -37,6 +42,9 @@ export default function NotifyForm() {
                 "Subscribed",
                 "your email has been added to the wailist!",
             );
+            target.reset();
+            waitlistCount.value =
+                waitlistCount.value !== null ? waitlistCount.value + 1 : 1;
         } catch (err) {
             let msg = "Please try again later!";
             if (err instanceof Error) {
