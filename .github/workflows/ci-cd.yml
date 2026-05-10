@@ -32,8 +32,8 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
     strategy:
       matrix:
-        env: [dev, prod]
-    environment: ${{ matrix.env }}
+        variant: [dev, prod]
+    environment: ${{ matrix.variant }}
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v5
