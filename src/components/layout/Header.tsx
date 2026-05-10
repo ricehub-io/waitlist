@@ -8,6 +8,7 @@ import { useLocation } from "preact-iso";
 import { useEffect } from "preact/hooks";
 import { Collapsible } from "radix-ui";
 import scrollTo from "@/scrollTo";
+import { siteConfig } from "@/config";
 
 export default function Header() {
     const { route } = useLocation();
@@ -73,7 +74,12 @@ const BurgerMenu = () => {
 const Links = () => (
     <nav className="flex flex-col gap-y-4 tracking-[0.167em] uppercase sm:flex-row">
         <Link label="Explore" onClick={() => scrollTo("hero")} />
-        <Link label="How it works" onClick={() => scrollTo("how-it-works")} />
+        {siteConfig.sections.includes("how-it-works") && (
+            <Link
+                label="How it works"
+                onClick={() => scrollTo("how-it-works")}
+            />
+        )}
         <Link label="Creators" onClick={() => scrollTo("founding-creators")} />
     </nav>
 );
