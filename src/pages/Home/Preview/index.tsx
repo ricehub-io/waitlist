@@ -20,6 +20,10 @@ export default function PreviewSection() {
         );
     }, []);
 
+    const onAddRiceClick = () => {
+        scrollTo("join-waitlist");
+    };
+
     return (
         <Section id="preview">
             <div className="lg:max-w-146.25">
@@ -30,9 +34,8 @@ export default function PreviewSection() {
                 <SectionDescription
                     text="
                     These are real rices from the community, imported with
-                    explicit creator permission. They represent the quality and
-                    style of configs that will be on the platform at launch.
-                    Every one is Nix Flake compatible."
+                    creator's permission. They represent the quality and
+                    style of configs that will be on the platform at launch."
                 />
             </div>
 
@@ -44,7 +47,10 @@ export default function PreviewSection() {
                 ))}
                 <li className="md:min-h-70">
                     <div className="border-slate flex h-80 flex-col items-center justify-center gap-4 border-2 border-dashed md:h-full">
-                        <button className="bg-phosphor flex aspect-square cursor-pointer items-center justify-center p-5 text-black">
+                        <button
+                            onClick={onAddRiceClick}
+                            className="bg-phosphor flex aspect-square cursor-pointer items-center justify-center p-5 text-black"
+                        >
                             <i class="hn hn-plus text-4xl" />
                         </button>
                         <p className="font-syne text-xl font-bold">
