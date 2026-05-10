@@ -5,7 +5,13 @@ import NotifyForm from "@/components/ui/NotifyForm";
 import { ComponentChildren } from "preact";
 import { cn } from "@/lib/utils";
 import EmailForm from "@/components/ui/EmailForm";
-import { founderStats, waitlistCount } from "@/state";
+import {
+    founderStats,
+    slotsAvailable,
+    slotsTaken,
+    slotsTotal,
+    waitlistCount,
+} from "@/state";
 import { useEffect } from "preact/hooks";
 import { apiFetch } from "@/api";
 import { FoundingCreatorStatsSchema } from "@/types";
@@ -18,10 +24,12 @@ const ForCreatorsItems = [
     "Founding Creator badge on your profile",
 ];
 
-const foundersConfirmed = computed(() => founderStats.value.slotsTaken);
+const waitlistCountWithPlaceholder = computed(() =>
+    waitlistCount.value !== null ? waitlistCount.value : "—",
+);
 const CounterItems = [
-    { value: waitlistCount, label: "On waitlist" },
-    { value: foundersConfirmed, label: "Creators confirmed" },
+    { value: waitlistCountWithPlaceholder, label: "On waitlist" },
+    { value: slotsTaken, label: "Creators confirmed" },
     { value: "Free Pro", label: "Competition Prize" },
     { value: "99%", label: "Deploy Success Rate" },
 ];
@@ -133,8 +141,7 @@ export default function HeroSection() {
                             <div>
                                 <PanelHeading text="Founding Creator" />
                                 <p className="text-sm leading-normal sm:text-base">
-                                    We're selecting{" "}
-                                    {founderStats.value.slotsTotal} founding
+                                    We're selecting {slotsTotal} founding
                                     creators to launch the platform. Your rice
                                     on the homepage.{" "}
                                     <span className="text-cyan">
@@ -155,8 +162,7 @@ export default function HeroSection() {
                                 <p className="font-dm-mono text-3xs sm:text-2xs mt-2 leading-none tracking-[0.125em] sm:tracking-widest">
                                     Only{" "}
                                     <span className="text-cyan">
-                                        {founderStats.value.slotsAvailable}{" "}
-                                        spots
+                                        {slotsAvailable} spots
                                     </span>{" "}
                                     remaining.
                                 </p>
@@ -168,7 +174,7 @@ export default function HeroSection() {
                         {CounterItems.map(({ value, label }, idx) => (
                             <div
                                 key={idx}
-                                className="flex flex-col justify-center border border-white/7 bg-white/2 p-6 sm:px-4.5 sm:py-3"
+                                className="flex h-full flex-col justify-center border border-white/7 bg-white/2 p-6 sm:px-4.5 sm:py-3"
                             >
                                 <p
                                     className={`font-syne mb-2.5 text-xl leading-none font-extrabold -tracking-[0.05em] sm:mb-2 sm:text-2xl sm:-tracking-[0.042em] ${idx % 2 == 0 ? "text-phosphor" : ""}`}
@@ -259,10 +265,9 @@ const ScrollingText = () => {
                         </Text>
                         <Text>
                             <AccentDot />
-                            {founderStats.value.slotsTotal} FOUNDING CREATOR
-                            SPOTS -
+                            {slotsTotal} FOUNDING CREATOR SPOTS -
                             <span className="text-cyan">
-                                {founderStats.value.slotsAvailable} REMAINING
+                                {slotsAvailable} REMAINING
                             </span>
                         </Text>
                     </div>

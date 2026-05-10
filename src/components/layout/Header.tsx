@@ -34,8 +34,10 @@ export default function Header() {
             <div className="hidden flex-1 items-center sm:flex sm:justify-end">
                 <Links />
                 <p className="mr-6 ml-auto hidden tracking-[0.14em] uppercase lg:block">
-                    <span className="text-phosphor">{waitlistCount}</span> on
-                    waitlist
+                    <span className="text-phosphor">
+                        {waitlistCount.value !== null ? waitlistCount : "—"}
+                    </span>{" "}
+                    on waitlist
                 </p>
                 <JoinButton />
             </div>
