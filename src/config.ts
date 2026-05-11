@@ -16,7 +16,7 @@ interface SiteConfig {
 }
 
 const PROD: SiteConfig = {
-    sections: ["hero", "founding-creators", "final-cta"],
+    sections: ["hero", "preview", "founding-creators", "final-cta"],
 };
 
 const DEV: SiteConfig = {
