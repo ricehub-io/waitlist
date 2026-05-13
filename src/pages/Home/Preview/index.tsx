@@ -5,14 +5,20 @@ import SectionBadge from "@/components/ui/SectionBadge";
 import SectionDescription from "@/components/ui/SectionDescription";
 import SectionTitle from "@/components/ui/SectionTitle";
 import RiceCard from "@/pages/Home/Preview/RiceCard";
+import SkeletonCard from "@/pages/Home/Preview/SkeletonCard";
 import scrollTo from "@/scrollTo";
 import { slotsAvailable } from "@/state";
 import { PreviewRice, PreviewRiceSchema } from "@/types";
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
 
+// How many rices are we expected to fetch from API.
+// Used to display given amount of rice placeholders before
+// they're fetched from API.
+const RICE_COUNT = 5;
+
 export default function PreviewSection() {
-    const rices = useSignal<PreviewRice[]>([]);
+    const rices = useSignal<PreviewRice[] | null>(null);
 
     useEffect(() => {
         apiFetch("GET", "/rices", null, PreviewRiceSchema.array()).then(
@@ -22,6 +28,9 @@ export default function PreviewSection() {
 
     const onAddRiceClick = () => {
         scrollTo("join-waitlist");
+        <li>
+            <SkeletonCard />
+        </li>;
     };
 
     return (
@@ -40,11 +49,15 @@ export default function PreviewSection() {
             </div>
 
             <ul className="grid grid-cols-1 gap-0.5 sm:grid-cols-2 lg:grid-cols-3">
-                {rices.value.map((rice) => (
-                    <li key={rice.id}>
-                        <RiceCard {...rice} />
-                    </li>
-                ))}
+                {rices.value !== null
+                    ? rices.value.map((rice) => (
+                          <li key={rice.id}>
+                              <RiceCard {...rice} />
+                          </li>
+                      ))
+                    : [...Array(RICE_COUNT)].map((_, idx) => (
+                          <SkeletonCard key={idx} />
+                      ))}
                 <li className="md:min-h-70">
                     <div className="border-slate flex h-80 flex-col items-center justify-center gap-4 border-2 border-dashed md:h-full">
                         <button
