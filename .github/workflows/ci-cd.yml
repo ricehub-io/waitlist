@@ -2,9 +2,12 @@ name: CI/CD pipeline
 
 on:
   push:
-    branches: ['**']
+    branches: [main]
   pull_request:
-    branches: ['**']
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ci:
@@ -26,10 +29,23 @@ jobs:
       - run: pnpm exec tsc --noEmit
       - run: pnpm build
 
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      website: ${{ steps.filter.outputs.website }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            website:
+              - '!**.md'
+
   cd:
     runs-on: ubuntu-latest
-    needs: [ci]
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    needs: [ci, changes]
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.changes.outputs.website == 'true' }}
     strategy:
       matrix:
         variant: [dev, prod]
