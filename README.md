@@ -38,7 +38,7 @@ The built site is placed to `dist/` directory.
 
 The site has two variants, selected at build time via the `VITE_SITE_VARIANT` environment variable:
 
-- `dev` (default): all sections are enabled (hero, preview, how it works, terminal deploy, founding creators, pricing, faq, final cta).
+- `dev` (default): all sections are enabled (hero, preview, how it works, terminal deploy, pre-launch competition, founding creators, pricing, faq, final cta).
 - `prod`: a trimmed-down variant with only hero, preview, founding creators and final cta.
 
 Example:

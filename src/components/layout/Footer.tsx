@@ -7,7 +7,6 @@ interface SectionLink {
     label: string;
     anchorId?: string;
     href?: string;
-    hidden?: boolean;
 }
 interface Section {
     title: string;
@@ -15,19 +14,35 @@ interface Section {
 }
 const SECTIONS: Section[] = [
     {
+        title: "Website",
+        links: [
+            {
+                label: "Source Code",
+                href: "https://github.com/ricehub-io/waitlist",
+            },
+        ],
+    },
+    {
         title: "Platform",
         links: [
             { label: "Join Waitlist", anchorId: "join-waitlist" },
-            {
-                label: "How It Works",
-                anchorId: "how-it-works",
-                hidden: !siteConfig.sections.includes("how-it-works"),
-            },
-            {
-                label: "Pricing",
-                anchorId: "pricing",
-                hidden: !siteConfig.sections.includes("pricing"),
-            },
+            // ts broke prettier formatting :sob:
+            ...(siteConfig.sections.includes("how-it-works")
+                ? [
+                      {
+                          label: "How It Works",
+                          anchorId: "how-it-works",
+                      },
+                  ]
+                : []),
+            ...(siteConfig.sections.includes("pricing")
+                ? [
+                      {
+                          label: "Pricing",
+                          anchorId: "pricing",
+                      },
+                  ]
+                : []),
         ],
     },
     {
@@ -66,8 +81,8 @@ export default function Footer() {
 
     return (
         <footer className="border-obsidian border-t px-5 py-10 sm:px-10 xl:px-24">
-            <div className="flex flex-col justify-between gap-y-6 xl:flex-row">
-                <div className="xs:max-w-fit xs:min-w-fit">
+            <div className="flex flex-col justify-between gap-y-12 xl:flex-row">
+                <div className="w-fit">
                     <h3 className="font-syne mb-3 text-2xl leading-none font-extrabold">
                         Rice
                         <span className="text-phosphor">Hub</span>
@@ -78,7 +93,7 @@ export default function Footer() {
                     <NotifyForm />
                 </div>
 
-                <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-10">
+                <div className="grid grid-cols-3 gap-5 lg:grid-cols-5 xl:gap-7">
                     {SECTIONS.map(({ title, links }, idx) => (
                         <div key={idx} className="font-epilogue flex flex-col">
                             <h3 className="mb-4 text-base leading-none sm:mb-6 sm:text-xl">
@@ -86,39 +101,38 @@ export default function Footer() {
                             </h3>
                             <ul>
                                 {links.map(
-                                    ({ label, anchorId, href, hidden }, lidx) =>
-                                        !hidden && (
-                                            <li
-                                                key={lidx}
-                                                className="text-2xs text-parchment/44 hover:text-phosphor leading-none transition-colors not-last:mb-3 sm:text-sm"
-                                            >
-                                                {anchorId !== undefined ? (
-                                                    <input
-                                                        className="cursor-pointer"
-                                                        type="button"
-                                                        value={label}
-                                                        onClick={() =>
-                                                            handleAnchorClick(
-                                                                anchorId,
-                                                            )
-                                                        }
-                                                    />
-                                                ) : (
-                                                    <a
-                                                        href={href}
-                                                        target={
-                                                            href?.startsWith(
-                                                                "https://",
-                                                            )
-                                                                ? "_blank"
-                                                                : "_self"
-                                                        }
-                                                    >
-                                                        {label}
-                                                    </a>
-                                                )}
-                                            </li>
-                                        ),
+                                    ({ label, anchorId, href }, lidx) => (
+                                        <li
+                                            key={lidx}
+                                            className="text-2xs text-parchment/44 hover:text-phosphor leading-none transition-colors not-last:mb-3 sm:text-sm"
+                                        >
+                                            {anchorId !== undefined ? (
+                                                <input
+                                                    className="cursor-pointer"
+                                                    type="button"
+                                                    value={label}
+                                                    onClick={() =>
+                                                        handleAnchorClick(
+                                                            anchorId,
+                                                        )
+                                                    }
+                                                />
+                                            ) : (
+                                                <a
+                                                    href={href}
+                                                    target={
+                                                        href?.startsWith(
+                                                            "https://",
+                                                        )
+                                                            ? "_blank"
+                                                            : "_self"
+                                                    }
+                                                >
+                                                    {label}
+                                                </a>
+                                            )}
+                                        </li>
+                                    ),
                                 )}
                             </ul>
                         </div>
@@ -128,10 +142,10 @@ export default function Footer() {
 
             <div className="my-8 h-px bg-white/7 sm:mt-11" />
 
-            <div className="font-dm-mono flex flex-col items-center justify-between gap-y-4 uppercase lg:flex-row">
+            <div className="font-dm-mono flex flex-col justify-between gap-y-4 uppercase md:flex-row md:items-center">
                 <p className="text-parchment/16 text-2xs leading-none tracking-[0.15em]">
-                    © 2026 <span className="text-phosphor">RiceHub</span> ·
-                    Building in stealth · All rights reserved
+                    © 2026 <span className="text-phosphor">RiceHub</span> · All
+                    rights reserved
                 </p>
                 <ul className="leading-0">
                     {TAGS.map((text, idx) => (

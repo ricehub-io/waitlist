@@ -16,6 +16,7 @@ import { useEffect } from "preact/hooks";
 import { apiFetch } from "@/api";
 import { FoundingCreatorStatsSchema } from "@/types";
 import { computed } from "@preact/signals";
+import { siteConfig } from "@/config";
 
 const ForCreatorsItems = [
     "Free Pro subscription — forever, no conditions",
@@ -30,8 +31,12 @@ const waitlistCountWithPlaceholder = computed(() =>
 const CounterItems = [
     { value: waitlistCountWithPlaceholder, label: "On waitlist" },
     { value: slotsTaken, label: "Creators confirmed" },
-    { value: "Free Pro", label: "Competition Prize" },
-    { value: "99%", label: "Deploy Success Rate" },
+    ...(siteConfig.sections.includes("pre-launch-competition")
+        ? [{ value: "Free Pro", label: "Competition Prize" }]
+        : []),
+    ...(siteConfig.sections.includes("terminal-deploy")
+        ? [{ value: "99%", label: "Deploy Success Rate" }]
+        : []),
 ];
 
 // TODO: split hero section into multiple components
@@ -100,8 +105,8 @@ export default function HeroSection() {
                         one-click Nix Flake deployment
                     </span>
                     , <br className="hidden lg:block" />
-                    creator monetization, and monthly cash competitions. We
-                    launch soon. Be first.
+                    creator monetization, and cash competitions. We launch soon.
+                    Be first.
                 </p>
 
                 <div>
@@ -170,7 +175,15 @@ export default function HeroSection() {
                         </Panel>
                     </div>
 
-                    <div className="mt-0.5 grid grid-cols-2 gap-0.5 lg:grid-cols-4">
+                    <div
+                        // unaimeds: I couldn't find a better way to conditionally
+                        // set the grid column count based on CounterItems length :c
+                        className={cn(
+                            "mt-0.5 grid grid-cols-2 gap-0.5",
+                            CounterItems.length === 3 ? "lg:grid-cols-3" : "",
+                            CounterItems.length === 4 ? "lg:grid-cols-4" : "",
+                        )}
+                    >
                         {CounterItems.map(({ value, label }, idx) => (
                             <div
                                 key={idx}

@@ -3,6 +3,7 @@ const ALL_SECTIONS: string[] = [
     "preview",
     "how-it-works",
     "terminal-deploy",
+    "pre-launch-competition",
     "founding-creators",
     "pricing",
     "faq",

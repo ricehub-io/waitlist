@@ -41,6 +41,7 @@ jobs:
           filters: |
             website:
               - '!**.md'
+              - '!screenshots/**'
 
   cd:
     runs-on: ubuntu-latest
