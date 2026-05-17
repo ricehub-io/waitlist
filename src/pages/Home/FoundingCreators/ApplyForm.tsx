@@ -69,6 +69,18 @@ export default function ApplyForm() {
                     placeholder="https://github.com/example/my-dotfiles"
                     name="dotfilesUrl"
                 />
+                <Form.Field name="website">
+                    <Form.Control asChild>
+                        <input
+                            className="hidden"
+                            type="text"
+                            name="website"
+                            aria-hidden
+                            tabIndex={-1}
+                            autoComplete="off"
+                        />
+                    </Form.Control>
+                </Form.Field>
                 <Form.Submit asChild>
                     <Button
                         label="Submit Application"

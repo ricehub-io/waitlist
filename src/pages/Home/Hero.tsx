@@ -276,6 +276,17 @@ const ScrollingText = () => {
                             <span className="text-phosphor">RICEHUB</span> - THE
                             MARKETPLACE FOR LINUX RICING
                         </Text>
+                        {siteConfig.sections.includes(
+                            "pre-launch-competition",
+                        ) && (
+                            <Text>
+                                <AccentDot />
+                                PRE-LAUNCH COMPETITION OPEN NOW -{" "}
+                                <span className="text-phosphor">
+                                    SUBMIT YOUR RICE
+                                </span>
+                            </Text>
+                        )}
                         <Text>
                             <AccentDot />
                             {slotsTotal} FOUNDING CREATOR SPOTS -
